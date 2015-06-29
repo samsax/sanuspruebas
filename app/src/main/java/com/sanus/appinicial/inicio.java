@@ -1,20 +1,39 @@
 package com.sanus.appinicial;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 
-public class inicio extends ActionBarActivity {
+public class inicio extends Activity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
+        Spinner listview = (Spinner) findViewById(R.id.ejecicio);
+        String[] values = new String[] { "Poco o nulo", "Medio", "Alto rendimiento"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        listview.setAdapter(adapter);
+        final ArrayList<String> list = new ArrayList<String>();
+        for (int i = 0; i < values.length; ++i) {
+            list.add(values[i]);
+        }
     }
 
-    @Override
+
+
+        @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_inicio, menu);
@@ -34,5 +53,9 @@ public class inicio extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean isCancelled() {
+        return true;
     }
 }

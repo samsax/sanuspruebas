@@ -3,4 +3,11 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="Registrar">Registrar</string>
+    <string name="AppNombre">SanuS</string>
+    <string name="Altura">Altura</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Ejercicio">Ejercicio</string>
+    <string name="Peso">Peso</string>
+    <string name="Nacimiento">Fecha de nacimiento</string>
 </resources>
