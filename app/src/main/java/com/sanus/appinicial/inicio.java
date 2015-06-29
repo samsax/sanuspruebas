@@ -15,25 +15,29 @@ import java.util.ArrayList;
 public class inicio extends Activity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-        Spinner listview = (Spinner) findViewById(R.id.ejecicio);
-        String[] values = new String[] { "Poco o nulo", "Medio", "Alto rendimiento"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        Spinner ejecicio = (Spinner) findViewById(R.id.ejecicio);
+        Spinner genero = (Spinner) findViewById(R.id.genero);
+        String[] values = new String[]{getString(R.string.Poco), getString(R.string.Ligero), getString(R.string.Moderado),
+                getString(R.string.Fuerte), getString(R.string.MuyFuerte)};
+        String[] generos = new String[]{getString(R.string.Masculino),getString(R.string.Femenino)};
+        ArrayAdapter<String> adapterEje = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, values);
-        listview.setAdapter(adapter);
-        final ArrayList<String> list = new ArrayList<String>();
+        ArrayAdapter<String> adapterGen = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, generos);
+        ejecicio.setAdapter(adapterEje);
+        genero.setAdapter(adapterGen);
+       /* final ArrayList<String> list = new ArrayList<String>();
         for (int i = 0; i < values.length; ++i) {
             list.add(values[i]);
-        }
+        }*/
     }
 
 
-
-        @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_inicio, menu);
