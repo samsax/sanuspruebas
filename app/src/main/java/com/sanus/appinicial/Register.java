@@ -198,6 +198,7 @@ public class Register extends Activity implements OnClickListener{
     }
 
     public int gender(){
+
         int g = Integer.parseInt(sex);
         return g;
     }
