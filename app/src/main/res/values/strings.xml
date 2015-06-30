@@ -10,11 +10,17 @@
     <string name="Ejercicio">Días de ejercicio a la semana</string>
     <string name="Peso">Peso (Kilogramos)</string>
     <string name="Nacimiento">Fecha de nacimiento</string>
-    <string name="Poco">Poco o ningún </string>
-    <string name="Ligero"> Ligero (1-3)</string>
-    <string name="Moderado">Moderado (3-5)</string>
-    <string name="Fuerte">Fuerte (6-7)</string>
-    <string name="MuyFuerte">Muy fuerte (dos veces al día)</string>
-    <string name="Masculino">Masculino</string>
-    <string name="Femenino">Femenino</string>
+    <string-array name="cantidad">
+        <item> </item>
+        <item>Poco o ningún</item>
+        <item>Ligero (1-3)</item>
+        <item>Moderado (3-5)</item>
+        <item>Fuerte (6-7)</item>
+        <item>Muy fuerte (dos veces al día)</item>
+    </string-array>
+    <string-array name="sexo">
+        <item> </item>
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
 </resources>

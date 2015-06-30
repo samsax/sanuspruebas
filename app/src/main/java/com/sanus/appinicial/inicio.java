@@ -1,65 +1,83 @@
 package com.sanus.appinicial;
 
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Spinner;
+import android.widget.TextView;
 
-import java.util.ArrayList;
+/**
+ * Created by BRIAN on 29/06/2015.
+ */
 
 
-public class inicio extends Activity {
+public class Inicio extends Activity{
+    Bundle datos = this.getIntent().getExtras();
+    int altura = datos.getInt("altura");
+    float peso = datos.getFloat("peso");
+    int edad = datos.getInt("edad");
+    int genero = datos.getInt("gener");
+    int ejercicio = datos.getInt("ejercicio");
 
+    /*int altura = getIntent().getIntExtra("altura", 0);
+    float peso = getIntent().getFloatExtra("peso", 0);
+    int edad = getIntent().getIntExtra("edad", 0);
+    int genero = getIntent().getIntExtra("gener", 0);
+    int ejercicio = getIntent().getIntExtra("ejercicio",0);*/
 
-    @Override
+    double IMC, TMB , pesoIdeal;
+
+    private TextView IndiceMC, TasaMB, pesoI;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inicio);
-        Spinner ejecicio = (Spinner) findViewById(R.id.ejecicio);
-        Spinner genero = (Spinner) findViewById(R.id.genero);
-        String[] values = new String[]{getString(R.string.Poco), getString(R.string.Ligero), getString(R.string.Moderado),
-                getString(R.string.Fuerte), getString(R.string.MuyFuerte)};
-        String[] generos = new String[]{getString(R.string.Masculino),getString(R.string.Femenino)};
-        ArrayAdapter<String> adapterEje = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
-        ArrayAdapter<String> adapterGen = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, generos);
-        ejecicio.setAdapter(adapterEje);
-        genero.setAdapter(adapterGen);
-       /* final ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < values.length; ++i) {
-            list.add(values[i]);
-        }*/
+        setContentView(R.layout.inicio);
+
+        IndiceMC = (TextView) findViewById(R.id.IMC);
+        TasaMB = (TextView)findViewById(R.id.TMB);
+        pesoI = (TextView)findViewById(R.id.pesoIdeal);
+
+        IndiceMC.setText(Double.toString(calcularIMC()));
+        TasaMB.setText(Double.toString(calcualrTMB()));
+        pesoI.setText(Double.toString(calcularPeso()));
+
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_inicio, menu);
-        return true;
+    public double calcularIMC(){
+        IMC=peso/((altura/100)^2);
+        return IMC;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public double calcularPeso(){
+        pesoIdeal=21.7*((altura/100)^2);
+        return pesoIdeal;
+    }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public double calcualrTMB(){
+        TMB= (10*peso)+(6.25*altura)-(5*edad);
+        if(genero==1){
+            TMB = TMB+5;
+        }else if(genero==2){
+            TMB = TMB -161;
         }
-
-        return super.onOptionsItemSelected(item);
+        switch (ejercicio){
+            case 1:
+                TMB = TMB*1.2;
+                break;
+            case 2:
+                TMB =TMB*1.375;
+                break;
+            case 3:
+                TMB =TMB*1.55;
+                break;
+            case 4:
+                TMB =TMB*1.725;
+                break;
+            case 5:
+                TMB =TMB*1.9;
+                break;
+            default:
+                break;
+        }
+        return TMB;
     }
 
-    public boolean isCancelled() {
-        return true;
-    }
 }
