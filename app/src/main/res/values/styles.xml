@@ -1,8 +1,35 @@
 <resources>
 
     <!-- Base application theme. -->
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@drawable/fondo</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">@color/button_material_dark</item>
+    </style>
+    <style name="Header" parent="@android:style/Widget.Holo.Light.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textColor">@android:color/holo_blue_bright</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    <style name="Message" parent="@android:style/Widget.Holo.Light.TextView">
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColor">@android:color/background_dark</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Separator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@android:color/holo_blue_bright</item>
+        <item name="android:layout_marginBottom">@dimen/activity_vertical_margin</item>
     </style>
 
+    <style name="EditTextStyle" parent="@android:style/Widget.Holo.Light.EditText">
+        <item name="android:background">@drawable/rectangle</item>
+        <item name="android:padding">10dp</item>
+    </style>
 </resources>
