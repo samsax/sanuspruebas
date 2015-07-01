@@ -1,8 +1,18 @@
 package com.sanus.appinicial;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.widget.TextView;
+
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by BRIAN on 29/06/2015.
@@ -10,6 +20,8 @@ import android.widget.TextView;
 
 
 public class Inicio extends Activity{
+
+/*
     Bundle datos = this.getIntent().getExtras();
     int altura = datos.getInt("altura");
     float peso = datos.getFloat("peso");
@@ -23,6 +35,21 @@ public class Inicio extends Activity{
     int genero = getIntent().getIntExtra("gener", 0);
     int ejercicio = getIntent().getIntExtra("ejercicio",0);*/
 
+    private ProgressDialog pDialog;
+
+    JSONParser jsonParser = new JSONParser();
+
+    private static final String INICIO_URL = "http://databasebauq.zz.mu/start/Inicio.php";
+
+    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_IMC = "IMC";
+    private static final String TAG_PesoI = "PesoIdeal";
+    private static final String TAG_TMB = "TMB";
+    private static int success;
+    private static String I, P, T;
+
+
+
     double IMC, TMB , pesoIdeal;
 
     private TextView IndiceMC, TasaMB, pesoI;
@@ -34,13 +61,67 @@ public class Inicio extends Activity{
         IndiceMC = (TextView) findViewById(R.id.IMC);
         TasaMB = (TextView)findViewById(R.id.TMB);
         pesoI = (TextView)findViewById(R.id.pesoIdeal);
+/*
+        IndiceMC.setText(" ");
+        TasaMB.setText(" ");
+        pesoI.setText(" ");
 
-        IndiceMC.setText(Double.toString(calcularIMC()));
-        TasaMB.setText(Double.toString(calcualrTMB()));
-        pesoI.setText(Double.toString(calcularPeso()));
+
+        IndiceMC.setText(Integer.toString(success));
+        TasaMB.setText(T);
+        pesoI.setText("Hola");
+*/
+    }
+
+
+    protected String doInBackground(String... args) {
+
+        List params = new ArrayList();
+
+        JSONObject json = jsonParser.makeHttpRequest(INICIO_URL, "GET", params );
+
+        // full json response
+        Log.d("Registering attempt", json.toString());
+
+
+
+        try {
+
+
+
+            // json success element
+            success = json.getInt(TAG_SUCCESS);
+            I = json.getString(TAG_IMC);
+            P = json.getString(TAG_PesoI);
+            T = json.getString(TAG_TMB);
+
+            if (success == 1) {
+                Log.d("Datos retornados", json.toString());
+                //return json.getString(TAG_MESSAGE);
+
+                IndiceMC.setText(I);
+                TasaMB.setText(T);
+                pesoI.setText(P);
+
+            }else{
+                Log.d("Fallo en la consulta", json.getString(TAG_SUCCESS));
+                //return json.getString(TAG_MESSAGE);
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        IndiceMC.setText(Integer.toString(success));
+        TasaMB.setText(T);
+        pesoI.setText("hola");
+
+        return null;
 
     }
 
+
+/*
     public double calcularIMC(){
         IMC=peso/((altura/100)^2);
         return IMC;
@@ -79,5 +160,5 @@ public class Inicio extends Activity{
         }
         return TMB;
     }
-
+*/
 }

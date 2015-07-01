@@ -71,15 +71,10 @@ public class Register extends Activity implements OnClickListener{
         // TODO Auto-generated method stub
 
         new CreateUser().execute();
-        Intent intent = new Intent(this,Inicio.class);
-        intent.putExtra("gener", gender());
-        intent.putExtra("peso", weigth());
-        intent.putExtra("altura", height());
-        intent.putExtra("edad", age());
-        intent.putExtra("ejercicio", exercise());
 
+        Intent intent = new Intent(Register.this,Datos.class);
+        startActivity(intent);
         finish();
-        Register.this.startActivity(intent);
     }
 
     class CreateUser extends AsyncTask<String, String, String> {
@@ -104,7 +99,6 @@ public class Register extends Activity implements OnClickListener{
             String ano = Integer.toString(fecha.getYear());
             String mes = Integer.toString(fecha.getMonth());
             String dia = Integer.toString(fecha.getDayOfMonth());
-            //String date = String.format("%s-%s-%s",ano, mes, dia);
             date = ano+"-"+mes+"-"+dia;
             pass = contra.getText().toString();
             alt = altura.getText().toString();
@@ -138,6 +132,7 @@ public class Register extends Activity implements OnClickListener{
                 if (success == 1) {
                     Log.d("Usuario Creado!", json.toString());
                     return json.getString(TAG_MESSAGE);
+
                 }else{
                     Log.d("Fallo en el registro", json.getString(TAG_MESSAGE));
                     return json.getString(TAG_MESSAGE);
@@ -151,13 +146,20 @@ public class Register extends Activity implements OnClickListener{
 
         }
 
-        protected void onPostExecute(String file_url) {
-            // dismiss the dialog once product deleted
-            pDialog.dismiss();
-            if (file_url != null){
-                Toast.makeText(Register.this, file_url, Toast.LENGTH_LONG).show();
-            }
+/*
+        public void cambiarVentana(){
+            Intent intent = new Intent(Register.this,Inicio.class);
+            intent.putExtra("gener", gender());
+            intent.putExtra("peso", weigth());
+            intent.putExtra("altura", height());
+            intent.putExtra("edad", age());
+            intent.putExtra("ejercicio", exercise());
+
+
+            startActivity(intent);
+            finish();
         }
+*/
 
 
     }
@@ -175,38 +177,20 @@ public class Register extends Activity implements OnClickListener{
         Calendar fechaNacimiento = Calendar.getInstance();
         Calendar fechaActual = Calendar.getInstance();
         fechaNacimiento.setTime(fechaNac);
-        int ano = fechaActual.get(Calendar.YEAR)- fechaNacimiento.get(Calendar.YEAR);
+        int ano = fechaActual.get(Calendar.YEAR)- fecha.getYear();
+        int mes =fechaActual.get(Calendar.MONTH)- fecha.getMonth();
+        int dia = fechaActual.get(Calendar.DATE)- fecha.getDayOfMonth();
+        /*int ano = fechaActual.get(Calendar.YEAR)- fechaNacimiento.get(Calendar.YEAR);
         int mes =fechaActual.get(Calendar.MONTH)- fechaNacimiento.get(Calendar.MONTH);
         int dia = fechaActual.get(Calendar.DATE)- fechaNacimiento.get(Calendar.DATE);
-        //Se ajusta el ano dependiendo el mes y el dia
+
+        //Se ajusta el ano dependiendo el mes y el dia*/
         if(mes<0 || (mes==0 && dia<0)){
             ano--;
         }
 
         return ano;
     }
-
-    public float weigth(){
-        float p = Float.parseFloat(pes);
-        return p;
-    }
-
-    public int height(){
-        float b = Float.parseFloat(alt);
-        int a = (int)b*100;
-        return a;
-    }
-
-    public int gender(){
-        int g = Integer.parseInt(sex);
-        return g;
-    }
-
-    public int exercise(){
-        int e = Integer.parseInt(eje);
-        return e;
-    }
-
 
 }
 
