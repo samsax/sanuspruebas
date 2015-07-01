@@ -71,10 +71,22 @@ public class Register extends Activity implements OnClickListener{
         // TODO Auto-generated method stub
 
         new CreateUser().execute();
+<<<<<<< HEAD
 
         Intent intent = new Intent(Register.this,Datos.class);
         startActivity(intent);
         finish();
+=======
+        Intent intent = new Intent(this,Inicio.class);
+        intent.putExtra("gener", gender());
+        intent.putExtra("peso", weigth());
+        intent.putExtra("altura", height());
+        intent.putExtra("edad", age());
+        intent.putExtra("ejercicio", exercise());
+        Register.this.startActivity(intent);
+        finish();
+
+>>>>>>> 0f255dfb16d5602232c11b11472446ba9b5387e5
     }
 
     class CreateUser extends AsyncTask<String, String, String> {
