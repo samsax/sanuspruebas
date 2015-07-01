@@ -192,8 +192,7 @@ public class Register extends Activity implements OnClickListener{
         return ano;
     }
 
-<<<<<<< HEAD
-=======
+
     public float weigth(){
         float p = Float.parseFloat(pes);
         return p;
@@ -217,6 +216,5 @@ public class Register extends Activity implements OnClickListener{
     }
 
 
->>>>>>> 3a4297f1aaa3ce1fe1cff091903b017f54513100
 }
 
