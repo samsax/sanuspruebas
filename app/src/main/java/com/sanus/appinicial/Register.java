@@ -192,5 +192,31 @@ public class Register extends Activity implements OnClickListener{
         return ano;
     }
 
+<<<<<<< HEAD
+=======
+    public float weigth(){
+        float p = Float.parseFloat(pes);
+        return p;
+    }
+
+    public int height(){
+        float b = Float.parseFloat(alt);
+        int a = (int)b*100;
+        return a;
+    }
+
+    public int gender(){
+
+        int g = Integer.parseInt(sex);
+        return g;
+    }
+
+    public int exercise(){
+        int e = Integer.parseInt(eje);
+        return e;
+    }
+
+
+>>>>>>> 3a4297f1aaa3ce1fe1cff091903b017f54513100
 }
 
