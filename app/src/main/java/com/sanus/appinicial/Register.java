@@ -77,9 +77,9 @@ public class Register extends Activity implements OnClickListener{
         intent.putExtra("altura", height());
         intent.putExtra("edad", age());
         intent.putExtra("ejercicio", exercise());
-
-        finish();
         Register.this.startActivity(intent);
+        finish();
+
     }
 
     class CreateUser extends AsyncTask<String, String, String> {
