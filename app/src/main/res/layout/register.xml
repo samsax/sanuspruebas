@@ -207,7 +207,8 @@
         </TableRow>
 
         <Button
-            style="@style/EditTextStyle"
+            style="@style/button_text"
+            android:background="@drawable/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Registrar"
@@ -215,7 +216,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_column="0"
-            android:background="@color/abc_search_url_text_normal" />
+            />
 
     </TableLayout>
 </ScrollView>

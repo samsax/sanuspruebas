@@ -10,6 +10,9 @@
     <string name="Ejercicio">Días de ejercicio a la semana</string>
     <string name="Peso">Peso (Kilogramos)</string>
     <string name="Nacimiento">Fecha de nacimiento</string>
+    <string name="indicadoresIMC"><![CDATA[IMC:\n Bajo peso (IMC <18,5) \n Rango normal (IMC = 18,5-24,99)\n Sobrepeso (IMC = 25-29,99)\n Obesidad (IMC ≥30)]]></string>
+    <string name="pesoIdeal">El siguiente deberia de ser tu peso: </string>
+    <string name="suTMB">Su Tasa Metabolica Basal es:</string>
     <string-array name="cantidad">
         <item> </item>
         <item>Poco o ningún</item>
