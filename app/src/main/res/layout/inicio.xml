@@ -14,45 +14,25 @@
         android:layout_height="wrap_content"
         android:text="@string/indicadoresIMC"
         android:id="@+id/textIMC"
-        android:textSize="25sp"
+        android:textSize="20sp"
          />
-    <TextView
-        style="@style/Message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="--------"
-        android:id="@+id/IMC"
-        android:textSize="40sp" />
-    <TextView
+
+        <TextView
         style="@style/EditTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/pesoIdeal"
         android:id="@+id/textPesoIdeal"
-        android:textSize="25sp"
+        android:textSize="20sp"
         />
-    <TextView
-        style="@style/Message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="------"
-        android:id="@+id/pesoIdeal"
-        android:textSize="40sp" />
-    <TextView
+
+        <TextView
         style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/suTMB"
         android:id="@+id/textTMB"
-        android:textSize="25sp"/>
+        android:textSize="20sp"/>
 
-    <TextView
-        style="@style/Message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-----"
-        android:id="@+id/TMB"
-        android:textSize="40sp" />
-
-</LinearLayout>
+    </LinearLayout>
     </ScrollView>

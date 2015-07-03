@@ -2,7 +2,7 @@
     <string name="app_name">AppInicial</string>
     <string name="action_settings">Settings</string>
     <string name="Registrar">Registrar</string>
-    <string name="AppNombre">SanuS</string>
+    <string name="AppNombre">Sanus</string>
     <string name="Altura">Altura (Metros)</string>
     <string name="Genero">Genero </string>
     <string name="Contra">Contraseña </string>
@@ -10,9 +10,9 @@
     <string name="Ejercicio">Días de ejercicio a la semana</string>
     <string name="Peso">Peso (Kilogramos)</string>
     <string name="Nacimiento">Fecha de nacimiento</string>
-    <string name="indicadoresIMC"><![CDATA[IMC:\n Bajo peso (IMC <18,5) \n Rango normal (IMC = 18,5-24,99)\n Sobrepeso (IMC = 25-29,99)\n Obesidad (IMC ≥30)]]></string>
-    <string name="pesoIdeal">El siguiente deberia de ser tu peso: </string>
-    <string name="suTMB">Su Tasa Metabolica Basal es:</string>
+    <string name="indicadoresIMC"><![CDATA[Indice de Masa Corporal(IMC):\n Bajo peso (IMC <18,5) \n Rango normal (IMC = 18,5-24,99)\n Sobrepeso (IMC = 25-29,99)\n Obesidad (IMC ≥30) \n Su IMC es: ]]></string>
+    <string name="pesoIdeal">Tu peso ideal es: </string>
+    <string name="suTMB">La cantidad de calorias que deberias consumir diario son: </string>
     <string-array name="cantidad">
         <item> </item>
         <item>Poco o ningún</item>

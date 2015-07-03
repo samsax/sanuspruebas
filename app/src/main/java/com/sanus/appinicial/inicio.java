@@ -58,9 +58,9 @@ public class Inicio extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
 
-        IndiceMC = (TextView) findViewById(R.id.IMC);
-        TasaMB = (TextView)findViewById(R.id.TMB);
-        pesoI = (TextView)findViewById(R.id.pesoIdeal);
+        IndiceMC = (TextView) findViewById(R.id.textIMC);
+        TasaMB = (TextView)findViewById(R.id.textTMB);
+        pesoI = (TextView)findViewById(R.id.textPesoIdeal);
 /*
         IndiceMC.setText(" ");
         TasaMB.setText(" ");

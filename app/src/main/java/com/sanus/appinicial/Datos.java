@@ -65,9 +65,9 @@ public class Datos extends ActionBarActivity {
         // Cargar los productos en el Background Thread
         new LoadAllProducts().execute();
         //Lista = (ListView) findViewById(R.id.listAll);
-        IMC = (TextView) findViewById(R.id.IMC);
-        pesoI = (TextView) findViewById(R.id.pesoIdeal);
-        TMB = (TextView) findViewById(R.id.TMB);
+        IMC = (TextView) findViewById(R.id.textIMC);
+        pesoI = (TextView) findViewById(R.id.textPesoIdeal);
+        TMB = (TextView) findViewById(R.id.textTMB);
 
 
     }//fin onCreate
@@ -123,9 +123,13 @@ public class Datos extends ActionBarActivity {
             runOnUiThread(new Runnable() {
                 public void run() {
 
-                    IMC.setText(String.format("IMC = %s",I));
-                    TMB.setText(String.format("TMB = %s",T));
-                    pesoI.setText(String.format("Peso Ideal", P));
+                    String textIMC = IMC.getText().toString();
+                    String textpesoI = pesoI.getText().toString();
+                    String textTMB = TMB.getText().toString();
+
+                    IMC.setText(String.format("%s%s",textIMC, I));
+                    TMB.setText(String.format("%s%s",textTMB, T));
+                    pesoI.setText(String.format("%s%s",textpesoI, P));
 
                 }
             });
