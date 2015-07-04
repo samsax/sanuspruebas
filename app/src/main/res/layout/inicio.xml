@@ -8,7 +8,17 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/inicio">
-    <TextView
+
+        <TextView
+            style="@style/Message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido: Nombre"
+            android:id="@+id/bienvenido"
+            android:textSize="40sp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
         style="@style/EditTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,5 +64,13 @@
         android:id="@+id/TMB"
         android:textSize="40sp" />
 
-</LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ir a Menu"
+            android:drawableRight="@mipmap/ic_launcher"
+            android:id="@+id/button"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
     </ScrollView>

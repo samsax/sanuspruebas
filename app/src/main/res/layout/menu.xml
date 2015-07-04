@@ -10,11 +10,20 @@
         android:layout_height="match_parent">
 
         <ImageButton
+            android:layout_width="549dp"
+            android:layout_height="236dp"
+            android:id="@+id/inicioButton"
+            android:background="@android:color/transparent"
+            android:src="@drawable/sanus"/>
+
+        <TextView
+            style="@style/Header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/inicioButton"
-            android:background="@drawable/button"
-            android:src="@drawable/sanus"/>
+            android:text="Agrega tu comida"
+            android:id="@+id/textView10"
+            android:layout_column="2"
+            android:textAlignment="center" />
 
         <TableRow
             android:layout_width="match_parent"
@@ -27,27 +36,29 @@
                 android:layout_height="20px"
                 android:layout_column="0" />
 
-            <ImageButton
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button"
                 android:id="@+id/desayunoButton"
-                android:src="@drawable/desayuno"
-                android:layout_column="1"
+                android:text="Desayuno"
+                android:drawableRight="@mipmap/ic_desayuno"
+                android:layout_column="2"
                 />
 
             <Space
                 android:layout_width="20px"
                 android:layout_height="20px"
-                android:layout_column="3" />
+                android:layout_column="4" />
 
-            <ImageButton
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/mediaButton"
                 android:background="@drawable/button"
-                android:src="@drawable/media"
-                android:layout_column="4" />
+                android:text="Media Mañana"
+                android:drawableRight="@mipmap/ic_media"
+                android:layout_column="5" />
         </TableRow>
 
         <Space
@@ -56,23 +67,26 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/">
 
-            <ImageButton
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/almuerzoButton"
-                android:src="@drawable/almuerzo"
+                android:text="Almuerzo"
+                android:drawableRight="@mipmap/ic_almu"
                 android:background="@drawable/button"
-                android:layout_column="1" />
+                android:layout_column="2" />
 
-            <ImageButton
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/algoButton"
-                android:src="@drawable/almuerzo"
+                android:text="Algo"
+                android:drawableRight="@mipmap/ic_algo"
                 android:background="@drawable/button"
-                android:layout_column="4" />
+                android:layout_column="5" />
 
         </TableRow>
 
@@ -84,27 +98,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageButton
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/cenaButton"
-                android:src="@drawable/almuerzo"
+                android:text="Cena"
+                android:drawableRight="@mipmap/ic_cena"
                 android:background="@drawable/button"
-                android:layout_column="1" />
+                android:layout_column="2" />
 
-            <ImageButton
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editarButton"
+                android:text="Editar Inf."
+                android:drawableRight="@mipmap/ic_media"
                 android:src="@drawable/almuerzo"
-                android:background="@drawable/button"
-                android:layout_column="4" />
+
+                android:layout_column="5" />
         </TableRow>
 
         <TextView
             style="@style/Header"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:text="Informacion general"
             android:id="@+id/textView9"
             android:layout_column="1" />
