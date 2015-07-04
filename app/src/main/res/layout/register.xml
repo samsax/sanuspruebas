@@ -16,9 +16,10 @@
         <TextView
             style="@style/Header"
             android:layout_width="match_parent"
-            android:layout_height="112dp"
+            android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/textView"
+            android:text="Registro"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -27,7 +28,7 @@
             android:textSize="50sp"
             android:textAlignment="inherit"
             android:layout_column="0"
-            android:background="@drawable/sanus"/>
+            android:drawableRight="@mipmap/ic_launcher"/>
 
         <TableRow
             android:layout_width="match_parent"
