@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:text="Ir a Menu"
             android:drawableRight="@mipmap/ic_launcher"
-            android:id="@+id/button"
+            android:id="@+id/iramenu"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>

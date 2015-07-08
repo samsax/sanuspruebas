@@ -2,9 +2,11 @@ package com.sanus.appinicial;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import org.apache.http.message.BasicNameValuePair;
@@ -118,6 +120,14 @@ public class Inicio extends Activity{
 
         return null;
 
+    }
+    public void onClick(View v) {
+        // TODO Auto-generated method stub
+        if(v.getId()== R.id.iramenu){
+                Intent i = new Intent(this, Menu.class);
+                startActivity(i);
+
+        }
     }
 
 

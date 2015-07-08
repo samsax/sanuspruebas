@@ -10,7 +10,7 @@
         android:label="Sanus"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Register"
+            android:name=".Login"
             android:label="Sanus">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +20,9 @@
         </activity>
         <activity android:name=".Inicio"></activity>
         <activity android:name=".Datos"></activity>
+        <activity android:name=".Register"></activity>
+        <activity android:name=".Menu"></activity>
+
     </application>
 
 </manifest>
