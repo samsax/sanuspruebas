@@ -12,7 +12,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
-        <item name="android:textColor">@android:color/holo_blue_bright</item>
+        <item name="android:textColor">@android:color/holo_blue_dark</item>
         <item name="android:layout_marginTop">10dp</item>
     </style>
     <style name="Message" parent="@android:style/Widget.Holo.Light.TextView">
@@ -45,4 +45,10 @@
         <item name="android:shadowDy" >1</item>
         <item name="android:shadowRadius" >2</item>
     </style>
+
+    <style name="listView" parent="Base.Widget.AppCompat.ListView.DropDown">
+        <item name="android:background">@drawable/rectangle</item>
+        <item name="android:shadowColor" >#000000</item>
+    </style>
+
 </resources>

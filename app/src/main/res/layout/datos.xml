@@ -5,10 +5,11 @@
     android:orientation="vertical">
 
     <ListView
+        style="@style/button_text"
         android:id="@+id/listAll"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:dividerHeight="3dp"
-        android:background="#fff"/>
+        android:background="@drawable/listview"/>
 
 </LinearLayout>

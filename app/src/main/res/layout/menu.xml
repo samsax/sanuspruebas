@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/menu">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:layout_width="279dp"
+            android:layout_height="250dp"
+            android:id="@+id/inicioButton"
+            android:background="@mipmap/ic_launcher"
+            />
+
+        <TextView
+            style="@style/Header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agrega tu comida"
+            android:id="@+id/textView10"
+            android:layout_column="2"
+            android:textAlignment="center" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px"
+                android:layout_column="0" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button"
+                android:id="@+id/desayunoButton"
+                android:text="Desayuno"
+                android:drawableRight="@mipmap/ic_desayuno"
+                android:layout_column="2"
+                />
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px"
+                android:layout_column="4" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mediaButton"
+                android:background="@drawable/button"
+                android:text="Media Mañana"
+                android:drawableRight="@mipmap/ic_media"
+                android:layout_column="5" />
+        </TableRow>
+
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/almuerzoButton"
+                android:text="Almuerzo"
+                android:drawableRight="@mipmap/ic_almu"
+                android:background="@drawable/button"
+                android:layout_column="2" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/algoButton"
+                android:text="Algo"
+                android:drawableRight="@mipmap/ic_algo"
+                android:background="@drawable/button"
+                android:layout_column="5" />
+
+        </TableRow>
+
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cenaButton"
+                android:text="Cena"
+                android:drawableRight="@mipmap/ic_cena"
+                android:background="@drawable/button"
+                android:layout_column="2" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Editar Inf."
+                android:drawableRight="@mipmap/ic_media"
+                android:src="@drawable/almuerzo"
+
+                android:layout_column="5" />
+        </TableRow>
+
+        <TextView
+            style="@style/Header"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:text="Informacion general"
+            android:id="@+id/textView9"
+            android:layout_column="1" />
+
+    </TableLayout>
+</ScrollView>
