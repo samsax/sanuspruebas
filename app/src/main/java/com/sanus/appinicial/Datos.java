@@ -1,33 +1,25 @@
 package com.sanus.appinicial;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.Button;
 import android.widget.TextView;
-
-import org.apache.http.NameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import android.view.View.OnClickListener;
 
 
-public class Datos extends ActionBarActivity {
+public class Datos extends ActionBarActivity{
 
     // Progress Dialog
     private ProgressDialog pDialog;
@@ -39,7 +31,7 @@ public class Datos extends ActionBarActivity {
 
 
     // url to get all products list
-    private static String url = "http://databasebauq.zz.mu/start/Inicio.php";
+    private static String url = "http://databasebauq.zz.mu/start/Calcular_Datos.php";
 
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -53,11 +45,12 @@ public class Datos extends ActionBarActivity {
     TextView IMC, pesoI, TMB;
     int success;
     String I, T, P;
+    Button bMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.inicio);
+        setContentView(R.layout.datos);
 
         // Hashmap para el ListView
         List = new ArrayList<HashMap<String, String>>();
@@ -68,6 +61,17 @@ public class Datos extends ActionBarActivity {
         IMC = (TextView) findViewById(R.id.textIMC);
         pesoI = (TextView) findViewById(R.id.textPesoIdeal);
         TMB = (TextView) findViewById(R.id.textTMB);
+
+        bMenu = (Button) findViewById(R.id.menu);
+        bMenu.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Datos.this,Menu.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
     }//fin onCreate

@@ -148,31 +148,16 @@ public class Register extends Activity implements OnClickListener{
 
         }
 
-/*
-        public void cambiarVentana(){
-            Intent intent = new Intent(Register.this,Inicio.class);
-            intent.putExtra("gener", gender());
-            intent.putExtra("peso", weigth());
-            intent.putExtra("altura", height());
-            intent.putExtra("edad", age());
-            intent.putExtra("ejercicio", exercise());
-
-
-            startActivity(intent);
-            finish();
-        }
-*/
-
 
     }
-
+/*
     public Integer age(){
         Date fechaNac=null;
         try {
             /**Se puede cambiar la mascara por el formato de la fecha
              que se quiera recibir, por ejemplo ano mes dia "yyyy-MM-dd"
              en este caso es dia mes ano*/
-            fechaNac = new SimpleDateFormat("dd-MM-yyyy").parse(date);
+/*            fechaNac = new SimpleDateFormat("dd-MM-yyyy").parse(date);
         } catch (Exception ex) {
             System.out.println("Error:"+ex);
         }
@@ -182,11 +167,6 @@ public class Register extends Activity implements OnClickListener{
         int ano = fechaActual.get(Calendar.YEAR)- fecha.getYear();
         int mes =fechaActual.get(Calendar.MONTH)- fecha.getMonth();
         int dia = fechaActual.get(Calendar.DATE)- fecha.getDayOfMonth();
-        /*int ano = fechaActual.get(Calendar.YEAR)- fechaNacimiento.get(Calendar.YEAR);
-        int mes =fechaActual.get(Calendar.MONTH)- fechaNacimiento.get(Calendar.MONTH);
-        int dia = fechaActual.get(Calendar.DATE)- fechaNacimiento.get(Calendar.DATE);
-
-        //Se ajusta el ano dependiendo el mes y el dia*/
         if(mes<0 || (mes==0 && dia<0)){
             ano--;
         }
@@ -216,7 +196,6 @@ public class Register extends Activity implements OnClickListener{
         int e = Integer.parseInt(eje);
         return e;
     }
-
-
+*/
 }
 

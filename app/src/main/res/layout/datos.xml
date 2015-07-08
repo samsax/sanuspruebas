@@ -1,15 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ListView
-        style="@style/button_text"
-        android:id="@+id/listAll"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:dividerHeight="3dp"
-        android:background="@drawable/listview"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/inicio"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/bienvenido"
+            style="@style/Message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:drawableRight="@mipmap/ic_launcher"
+            android:text="Bienvenido: Nombre"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/textIMC"
+            style="@style/EditTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/indicadoresIMC"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textPesoIdeal"
+            style="@style/EditTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pesoIdeal"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textTMB"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/suTMB"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:drawableRight="@mipmap/ic_launcher"
+            android:text="Ir a Menu" />
+
+    </LinearLayout>
+</ScrollView>
