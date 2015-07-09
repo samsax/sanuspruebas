@@ -65,11 +65,7 @@ public class Menu extends Activity implements OnClickListener {
         algo.setOnClickListener(this);
         comida.setOnClickListener(this);
 
-       /* setContentView(R.layout.receta);
 
-        recetas =(ListView)findViewById(R.id.recetalist);
-        lista = new ArrayList<HashMap<String, String>>();
-*/
     }
 
 
@@ -83,10 +79,18 @@ public class Menu extends Activity implements OnClickListener {
             case R.id.desayunoButton:
                 x.setBoton("desayuno");
                 break;
-
             case R.id.mediaButton:
+                x.setBoton("media");
                 break;
-
+            case R.id.almuerzoButton:
+                x.setBoton("almuerzo");
+                break;
+            case R.id.algoButton:
+                x.setBoton("algo");
+                break;
+            case R.id.cenaButton:
+                x.setBoton("comida");
+                break;
             default:
                 break;
         }
