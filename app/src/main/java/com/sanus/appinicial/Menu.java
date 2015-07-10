@@ -96,11 +96,9 @@ public class Menu extends Activity implements OnClickListener {
         }
 
         x.execute();
-
-
+        this.onStop();
 
     }
-
 
 
     class LoadAllRecipe extends AsyncTask<String, String, String> {
@@ -176,14 +174,14 @@ public class Menu extends Activity implements OnClickListener {
                 ListAdapter adapter = new SimpleAdapter(
                 Menu.this,
                 lista,
-                R.layout.singlepost,
+                android.R.layout.two_line_list_item,
                 new String[]{
                         TAG_NOMBRE,
                         TAG_CALORIAS,
                 },
                 new int[]{
-                        R.id.single_post_nombre,
-                        R.id.single_post_calorias,
+                        android.R.id.text1,
+                        android.R.id.text2,
                 });
                 // updating listview
                 //setListAdapter(adapter);
@@ -197,3 +195,15 @@ public class Menu extends Activity implements OnClickListener {
 
 
 }
+/*
+R.layout.singlepost,
+        new String[]{
+        TAG_NOMBRE,
+        TAG_CALORIAS,
+        },
+        new int[]{
+        R.id.single_post_nombre,
+        R.id.single_post_calorias,
+        });
+
+   */
