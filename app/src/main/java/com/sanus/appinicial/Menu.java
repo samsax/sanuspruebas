@@ -119,7 +119,7 @@ public class Menu extends Activity implements OnClickListener {
 
 
             List params = new ArrayList();
-            params.add(new BasicNameValuePair("boton", b));
+            params.add(new BasicNameValuePair(b, b));
             // getting JSON string from URL
             JSONObject json = jsonParser.makeHttpRequest(MENU_URL, "POST", params);
 
