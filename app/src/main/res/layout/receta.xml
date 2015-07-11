@@ -5,14 +5,14 @@
     android:weightSum="1">
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="484dp"
+        android:layout_width="192dp"
+        android:layout_height="222dp"
         android:id="@+id/recetalist" />
 
-    <TextView
-        android:layout_width="155dp"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hola"
-        android:id="@+id/textView11"
-        android:layout_weight="0.67" />
+        android:text="Volver al menu"
+        android:id="@+id/volver" />
+
 </LinearLayout>

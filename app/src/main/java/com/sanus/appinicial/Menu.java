@@ -44,6 +44,7 @@ public class Menu extends Activity implements OnClickListener {
     JSONArray recetaArray = null;
     Button desayuno, media, almuerzo, algo, comida;
     ListView recetas;
+    Button volver;
     ArrayAdapter<String> adaptador;
     ArrayList<HashMap<String, String>> lista;
 
@@ -96,7 +97,8 @@ public class Menu extends Activity implements OnClickListener {
         }
 
         x.execute();
-        this.onStop();
+        Intent i = new Intent(Menu.this, Receta.class);
+        startActivity(i);
 
     }
 
@@ -104,7 +106,6 @@ public class Menu extends Activity implements OnClickListener {
     class LoadAllRecipe extends AsyncTask<String, String, String> {
 
         private String b="";
-
 
         public void setBoton(String x){
             this.b=x;
@@ -161,14 +162,15 @@ public class Menu extends Activity implements OnClickListener {
             return null;
         }
 
+
         protected void onPostExecute(String file_url) {
 
-        runOnUiThread(new Runnable() {
+            runOnUiThread(new Runnable() {
             public void run() {
                 /**
                  * Updating parsed JSON data into ListView
                  * */
-                setContentView(R.layout.receta);
+               setContentView(R.layout.receta);
                 recetas =(ListView)findViewById(R.id.recetalist);
 
                 ListAdapter adapter = new SimpleAdapter(
@@ -184,26 +186,17 @@ public class Menu extends Activity implements OnClickListener {
                         android.R.id.text2,
                 });
                 // updating listview
-                //setListAdapter(adapter);
                 recetas.setAdapter(adapter);
 
+
+
+
             }
-        });
+            });
         }
 
     }
 
 
 }
-/*
-R.layout.singlepost,
-        new String[]{
-        TAG_NOMBRE,
-        TAG_CALORIAS,
-        },
-        new int[]{
-        R.id.single_post_nombre,
-        R.id.single_post_calorias,
-        });
 
-   */

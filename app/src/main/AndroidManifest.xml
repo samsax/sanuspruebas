@@ -21,6 +21,7 @@
         <activity android:name=".Datos"></activity>
         <activity android:name=".Register"></activity>
         <activity android:name=".Menu"></activity>
+        <activity android:name=".Receta"></activity>
 
     </application>
 
