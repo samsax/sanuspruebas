@@ -37,6 +37,7 @@ public class Perfil extends AppCompatActivity {
 
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
+    private static final String TAG_NOMBRE = "nombre";
     private static final String TAG_IMC = "IMC";
     private static final String TAG_PesoI = "PesoIdeal";
     private static final String TAG_TMB = "TMB";
@@ -44,9 +45,9 @@ public class Perfil extends AppCompatActivity {
     JSONArray products = null;
 
     //ListView Lista;
-    TextView IMC, pesoI, TMB;
+    TextView IMC, pesoI, TMB, name;
     int success;
-    String I, T, P;
+    String I, T, P, N;
     Button bMenu;
 
     @Override
@@ -85,6 +86,7 @@ public class Perfil extends AppCompatActivity {
         IMC = (TextView) findViewById(R.id.textIMC);
         pesoI = (TextView) findViewById(R.id.textPesoIdeal);
         TMB = (TextView) findViewById(R.id.textTMB);
+        name = (TextView) findViewById(R.id.hola);
 
         bMenu = (Button) findViewById(R.id.editar);
         bMenu.setOnClickListener(new OnClickListener() {
@@ -133,6 +135,7 @@ public class Perfil extends AppCompatActivity {
                 I = json.getString(TAG_IMC);
                 P = json.getString(TAG_PesoI);
                 T = json.getString(TAG_TMB);
+                N = json.getString(TAG_NOMBRE);
 
             }catch (JSONException e){
                 e.printStackTrace();
@@ -154,7 +157,9 @@ public class Perfil extends AppCompatActivity {
                     String textIMC = IMC.getText().toString();
                     String textpesoI = pesoI.getText().toString();
                     String textTMB = TMB.getText().toString();
+                    String textHola = name.getText().toString();
 
+                    name.setText(String.format("%s%s", N));
                     IMC.setText(String.format("%s%s",textIMC, I));
                     TMB.setText(String.format("%s%s",textTMB, T));
                     pesoI.setText(String.format("%s%s",textpesoI, P));
