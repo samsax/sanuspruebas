@@ -2,25 +2,23 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/menu">
+    android:id="@+id/editar">
 
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <Button
-            android:layout_width="279dp"
-            android:layout_height="250dp"
-            android:id="@+id/inicioButton"
-            android:background="@mipmap/ic_launcher"
-            />
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar">
+        </include>
 
         <TextView
             style="@style/Header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Agrega tu comida"
+            android:drawableLeft="@mipmap/ic_launcher"
             android:id="@+id/textView10"
             android:layout_column="2"
             android:textAlignment="center" />
@@ -51,6 +49,16 @@
                 android:layout_height="20px"
                 android:layout_column="4" />
 
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,12 +66,8 @@
                 android:background="@drawable/button"
                 android:text="Media Mañana"
                 android:drawableRight="@mipmap/ic_media"
-                android:layout_column="5" />
+                android:layout_column="2" />
         </TableRow>
-
-        <Space
-            android:layout_width="20px"
-            android:layout_height="20px" />
 
         <TableRow
             android:layout_width="match_parent"
@@ -79,6 +83,16 @@
                 android:background="@drawable/button"
                 android:layout_column="2" />
 
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,13 +100,8 @@
                 android:text="Algo"
                 android:drawableRight="@mipmap/ic_algo"
                 android:background="@drawable/button"
-                android:layout_column="5" />
-
+                android:layout_column="2" />
         </TableRow>
-
-        <Space
-            android:layout_width="20px"
-            android:layout_height="20px" />
 
         <TableRow
             android:layout_width="match_parent"
@@ -107,23 +116,7 @@
                 android:background="@drawable/button"
                 android:layout_column="2" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Editar Inf."
-                android:drawableRight="@mipmap/ic_media"
-                android:src="@drawable/almuerzo"
-
-                android:layout_column="5" />
         </TableRow>
-
-        <TextView
-            style="@style/Header"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:text="Informacion general"
-            android:id="@+id/textView9"
-            android:layout_column="1" />
 
     </TableLayout>
 </ScrollView>

@@ -1,0 +1,36 @@
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/ColorPrimary"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:elevation="4dp">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <Button
+            android:id="@+id/perfilt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/ic_perfil"
+            android:background="@color/material_deep_teal_500"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:text="perfil" />
+
+        <Button
+            android:id="@+id/menut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/material_deep_teal_500"
+            android:drawableTop="@mipmap/ic_media"
+            android:text="@string/Menu"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/perfilt"
+            android:layout_toStartOf="@+id/perfilt" />
+    </RelativeLayout>
+
+
+
+</android.support.v7.widget.Toolbar>

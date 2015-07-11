@@ -1,11 +1,8 @@
 package com.sanus.appinicial;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import org.apache.http.NameValuePair;
+
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,7 +18,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class Register extends Activity implements OnClickListener{
     private EditText nom, altura, peso, contra;
@@ -73,7 +69,7 @@ public class Register extends Activity implements OnClickListener{
         new CreateUser().execute();
 
 
-        Intent intent = new Intent(Register.this,Datos.class);
+        Intent intent = new Intent(Register.this,Perfil.class);
         startActivity(intent);
         finish();
 
