@@ -28,4 +28,10 @@
     </string-array>
     <string name="username">Username:</string>
     <string name="password">Password:</string>
+    <string name="Perfil">Perfil</string>
+    <string name="drawer_open">Navigation Abierta</string>
+    <string name="drawer_close">Navigation Cerrada</string>
+    <string name="Menu">Menu</string>
+
+
 </resources>

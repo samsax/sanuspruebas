@@ -1,11 +1,10 @@
 package com.sanus.appinicial;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,9 +16,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import android.view.View.OnClickListener;
+import android.support.v7.widget.Toolbar;
 
 
-public class Datos extends ActionBarActivity{
+public class Perfil extends AppCompatActivity {
+
+
 
     // Progress Dialog
     private ProgressDialog pDialog;
@@ -50,8 +52,30 @@ public class Datos extends ActionBarActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.datos);
+        setContentView(R.layout.perfil);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setLogo(R.mipmap.ic_launcher);
+        Button bPerfil= (Button) findViewById(R.id.perfilt);
+        bPerfil.setOnClickListener(new OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Perfil.this, Perfil.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        Button bMen= (Button) findViewById(R.id.menut);
+        bMen.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Perfil.this, Menu.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         // Hashmap para el ListView
         List = new ArrayList<HashMap<String, String>>();
 
@@ -62,19 +86,19 @@ public class Datos extends ActionBarActivity{
         pesoI = (TextView) findViewById(R.id.textPesoIdeal);
         TMB = (TextView) findViewById(R.id.textTMB);
 
-        bMenu = (Button) findViewById(R.id.menu);
+        bMenu = (Button) findViewById(R.id.editar);
         bMenu.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Datos.this,Menu.class);
+                Intent intent = new Intent(Perfil.this, Menu.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-
     }//fin onCreate
+
 
 
     class LoadAllProducts extends AsyncTask<String, String, String> {
@@ -85,7 +109,7 @@ public class Datos extends ActionBarActivity{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Datos.this);
+            pDialog = new ProgressDialog(Perfil.this);
             pDialog.setMessage("Calculando. Por favor espere...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
@@ -102,7 +126,7 @@ public class Datos extends ActionBarActivity{
             JSONObject json = jParser.makeHttpRequest(url, "GET", params);
 
             // Check your log cat for JSON reponse
-            Log.d("Datos: ", json.toString());
+            Log.d("Perfil: ", json.toString());
 
             try{
                 success = json.getInt(TAG_SUCCESS);

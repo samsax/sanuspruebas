@@ -1,19 +1,16 @@
 package com.sanus.appinicial;
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Spinner;
 import android.view.View.OnClickListener;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -27,7 +24,7 @@ import java.util.List;
 /**
  * Created by BRIAN on 07/07/2015.
  */
-public class Menu extends Activity implements OnClickListener {
+public class Menu extends AppCompatActivity implements OnClickListener {
 
     JSONParser jsonParser = new JSONParser();
 
@@ -53,7 +50,29 @@ public class Menu extends Activity implements OnClickListener {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setLogo(R.mipmap.ic_launcher);
+        Button bPerfil= (Button) findViewById(R.id.perfilt);
+        bPerfil.setOnClickListener(new OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this, Perfil.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        Button bMen= (Button) findViewById(R.id.menut);
+        bMen.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this, Menu.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         desayuno=(Button)findViewById(R.id.desayunoButton);
         media =(Button)findViewById(R.id.mediaButton);
         almuerzo =(Button)findViewById(R.id.almuerzoButton);

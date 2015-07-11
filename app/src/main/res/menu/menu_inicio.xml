@@ -1,10 +1,35 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".inicio">
+    tools:context=".Datos">
+
     <item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+        android:id="@+id/menu_buscar"
+        android:title="buscar"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="ifRoom|withText"/>
+
+    <item
+        android:id="@+id/menu_cortar"
+        android:title="cortar"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="ifRoom|withText"/>
+
+    <item
+        android:id="@+id/menu_copiar"
+        android:title="copiar"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="ifRoom|withText"/>
+
+    <item
+        android:id="@+id/menu_eliminar"
+        android:title="eliminar"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="ifRoom|withText"/>
+
+    <item
+        android:id="@+id/menu_compartir"
+        android:title="compartir"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="ifRoom|withText"/>
 </menu>

@@ -2,7 +2,6 @@ package com.sanus.appinicial;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -124,7 +123,7 @@ public class Login extends Activity implements OnClickListener {
                     edit.putString("username", username);
                     edit.commit();
 
-                    Intent i = new Intent(Login.this,Datos.class);
+                    Intent i = new Intent(Login.this,Perfil.class);
                     finish();
                     startActivity(i);
                     return json.getString(TAG_MESSAGE);
