@@ -6,30 +6,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import org.json.JSONArray;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
 /**
- * Created by BRIAN on 10/07/2015.
+ * Created by Samuel on 11/07/2015.
  */
-public class Receta extends AppCompatActivity {
-
-    ListView recetas;
-
+public class VerReceta extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.receta);
-        recetas = (ListView)findViewById(R.id.recetalist);
-        recetas.setAdapter(recetas.getAdapter());
+        setContentView(R.layout.verreceta);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
         Button bPerfil= (Button) findViewById(R.id.perfilt);
@@ -37,7 +26,7 @@ public class Receta extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Receta.this, Perfil.class);
+                Intent intent = new Intent(VerReceta.this, Perfil.class);
                 startActivity(intent);
                 finish();
             }
@@ -47,13 +36,25 @@ public class Receta extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Receta.this, Menu.class);
+                Intent intent = new Intent(VerReceta.this, Menu.class);
                 startActivity(intent);
                 finish();
             }
         });
-
-
+         Button volver=(Button)findViewById(R.id.volver);
+        volver.setOnClickListener(this);
     }
+
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.volver:
+                Intent i = new Intent(this, Receta.class);
+                startActivity(i);
+                break;
+            default:
+                break;
+        }
     }
+}
 
