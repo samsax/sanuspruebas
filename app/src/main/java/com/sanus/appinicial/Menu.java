@@ -116,8 +116,8 @@ public class Menu extends AppCompatActivity implements OnClickListener {
         }
 
         x.execute();
-        Intent i = new Intent(Menu.this, Receta.class);
-        startActivity(i);
+        //Intent i = new Intent(Menu.this, Receta.class);
+        //startActivity(i);
 
     }
 

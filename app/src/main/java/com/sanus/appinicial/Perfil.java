@@ -159,7 +159,7 @@ public class Perfil extends AppCompatActivity {
                     String textTMB = TMB.getText().toString();
                     String textHola = name.getText().toString();
 
-                    name.setText(String.format("%s%s", N));
+                    name.setText(String.format("%s%s", textHola, N));
                     IMC.setText(String.format("%s%s",textIMC, I));
                     TMB.setText(String.format("%s%s",textTMB, T));
                     pesoI.setText(String.format("%s%s",textpesoI, P));
