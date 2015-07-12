@@ -51,7 +51,7 @@ public class Menu extends AppCompatActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
         Button bPerfil= (Button) findViewById(R.id.perfilt);
         bPerfil.setOnClickListener(new OnClickListener() {
