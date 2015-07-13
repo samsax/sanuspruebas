@@ -28,8 +28,8 @@ public class Receta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.receta);
+        CargarRecetas c = new CargarRecetas();
         recetas = (ListView)findViewById(R.id.recetalist);
-        recetas.setAdapter(recetas.getAdapter());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
         Button bPerfil= (Button) findViewById(R.id.perfilt);

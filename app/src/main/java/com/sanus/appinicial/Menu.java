@@ -93,128 +93,36 @@ public class Menu extends AppCompatActivity implements OnClickListener {
     @Override
     public void onClick(View v) {
 
-        LoadAllRecipe x = new LoadAllRecipe();
+        String x="media";
 
         switch (v.getId()) {
             case R.id.desayunoButton:
-                x.setBoton("desayuno");
+                x="desayuno";
                 break;
             case R.id.mediaButton:
-                x.setBoton("media");
+                x="media";
                 break;
             case R.id.almuerzoButton:
-                x.setBoton("almuerzo");
+                x="almuerzo";
                 break;
             case R.id.algoButton:
-                x.setBoton("algo");
+                x="algo";
                 break;
             case R.id.cenaButton:
-                x.setBoton("comida");
+                x="comida";
                 break;
             default:
                 break;
         }
 
-        x.execute();
-        //Intent i = new Intent(Menu.this, Receta.class);
-        //startActivity(i);
+        Intent i = new Intent(Menu.this, CargarRecetas.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("comida", x);
+        i.putExtras(bundle);
+        startActivity(i);
 
     }
 
-
-    class LoadAllRecipe extends AsyncTask<String, String, String> {
-
-        private String b="";
-
-        public void setBoton(String x){
-            this.b=x;
-        }
-
-        protected String doInBackground(String... args) {
-            // Building Parameters
-
-
-            lista = new ArrayList<HashMap<String, String>>();
-
-
-
-            List params = new ArrayList();
-            params.add(new BasicNameValuePair(b, b));
-            // getting JSON string from URL
-            JSONObject json = jsonParser.makeHttpRequest(MENU_URL, "POST", params);
-
-            // Check your log cat for JSON reponse
-            Log.d("Recetas: ", json.toString());
-
-            try {
-                // Checking for SUCCESS TAG
-                int success = json.getInt(TAG_SUCCESS);
-
-                if (success == 1) {
-                    // products found
-                    // Getting Array of Products
-                    recetaArray = json.getJSONArray(TAG_RECETA);
-                    JSONObject r;
-                    String name, cal;
-
-                    for (int i = 0; i < recetaArray.length(); i++) {
-                        r = recetaArray.getJSONObject(i);
-
-                        // Storing each json item in variable
-                        name = r.getString(TAG_NOMBRE);
-                        cal = r.getString(TAG_CALORIAS);
-
-                        // creating new HashMap
-                        HashMap map = new HashMap();
-
-                        // adding each child node to HashMap key => value
-                        map.put(TAG_NOMBRE, name);
-                        map.put(TAG_CALORIAS, cal);
-
-                        lista.add(map);
-                    }
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-
-        protected void onPostExecute(String file_url) {
-
-            runOnUiThread(new Runnable() {
-            public void run() {
-                /**
-                 * Updating parsed JSON data into ListView
-                 * */
-               setContentView(R.layout.receta);
-                recetas =(ListView)findViewById(R.id.recetalist);
-
-                ListAdapter adapter = new SimpleAdapter(
-                Menu.this,
-                lista,
-                android.R.layout.two_line_list_item,
-                new String[]{
-                        TAG_NOMBRE,
-                        TAG_CALORIAS,
-                },
-                new int[]{
-                        android.R.id.text1,
-                        android.R.id.text2,
-                });
-                // updating listview
-                recetas.setAdapter(adapter);
-
-
-
-
-            }
-            });
-        }
-
-    }
 
 
 }
