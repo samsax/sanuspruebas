@@ -32,6 +32,7 @@ public class Receta extends AppCompatActivity {
         recetas = (ListView)findViewById(R.id.recetalist);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
+        setSupportActionBar(toolbar);
         Button bPerfil= (Button) findViewById(R.id.perfilt);
         bPerfil.setOnClickListener(new View.OnClickListener() {
 

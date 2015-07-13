@@ -26,6 +26,7 @@ import java.util.List;
  */
 public class Menu extends AppCompatActivity implements OnClickListener {
 
+    public final static String EXTRA_MESSAGE = "com.sanus.appinicial.VerReceta";
     JSONParser jsonParser = new JSONParser();
 
     //testing on Emulator:
@@ -51,7 +52,7 @@ public class Menu extends AppCompatActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
         Button bPerfil= (Button) findViewById(R.id.perfilt);
         bPerfil.setOnClickListener(new OnClickListener() {
@@ -115,10 +116,12 @@ public class Menu extends AppCompatActivity implements OnClickListener {
                 break;
         }
 
-        Intent i = new Intent(Menu.this, CargarRecetas.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("comida", x);
-        i.putExtras(bundle);
+        Intent i = new Intent(this, CargarRecetas.class);
+        //Bundle bundle = new Bundle();
+        //bundle.putString("comida", x);
+        //i.putExtras(bundle);
+        String message = x;
+        i.putExtra(EXTRA_MESSAGE, message);
         startActivity(i);
 
     }

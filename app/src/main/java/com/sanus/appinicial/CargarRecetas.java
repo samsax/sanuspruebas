@@ -52,15 +52,18 @@ public class CargarRecetas extends AppCompatActivity {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.receta);
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(Menu.EXTRA_MESSAGE);
         Bundle bundle = getIntent().getExtras();
+        Log.e("intent",message);
         LoadAllRecipe x =new LoadAllRecipe();
-        x.setBoton(bundle.getString("comida"));
+        x.setBoton(message);
+        x.execute(message);
 
-
-        new LoadAllRecipe().execute();
+        //new LoadAllRecipe().execute();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
         Button bPerfil= (Button) findViewById(R.id.perfilt);
         bPerfil.setOnClickListener(new View.OnClickListener() {

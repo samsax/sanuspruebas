@@ -21,6 +21,7 @@ public class VerReceta extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.verreceta);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
+        setSupportActionBar(toolbar);
         Button bPerfil= (Button) findViewById(R.id.perfilt);
         bPerfil.setOnClickListener(new View.OnClickListener() {
 
