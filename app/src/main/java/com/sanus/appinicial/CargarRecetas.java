@@ -41,11 +41,8 @@ public class CargarRecetas extends AppCompatActivity {
     JSONArray recetaArray = null;
     ListView recetas;
     ArrayList<HashMap<String, String>> lista;
-    private static String t="";
 
-    public void setComida(String x){
-        this.t=x;
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

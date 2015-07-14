@@ -2,6 +2,8 @@ package com.sanus.appinicial;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -124,8 +128,26 @@ public class Perfil extends AppCompatActivity {
         protected String doInBackground(String... args) {
             // Building Parameters
             List params = new ArrayList();
+            DBHelper dataBase = new DBHelper(Perfil.this, "DBUsuarios",null,1);
+            SQLiteDatabase dbread = dataBase.getReadableDatabase();
+            if(dbread != null) {
+
+                //Consultamos si hay usuario
+                Cursor c = dbread.rawQuery("SELECT id FROM Usuario WHERE codigo=1 ", null);
+                if (c.moveToFirst())
+                {
+                    Log.d("Enperfil", c.getString(0));
+                    String b=c.getString(0);
+                    Log.d("estoesb",b);
+                    params.add(new BasicNameValuePair("id", b));
+
+                    dbread.close();
+
+                }
+
+            }
             // getting JSON string from URL
-            JSONObject json = jParser.makeHttpRequest(url, "GET", params);
+            JSONObject json = jParser.makeHttpRequest(url, "POST", params);
 
             // Check your log cat for JSON reponse
             Log.d("Perfil: ", json.toString());

@@ -1,5 +1,6 @@
 package com.sanus.appinicial;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -54,6 +55,20 @@ public class Menu extends AppCompatActivity implements OnClickListener {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
+        Button bLogout= (Button) findViewById(R.id.logout);
+        bLogout.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                DBHelper dataBase = new DBHelper(Menu.this, "DBUsuarios",null,1);
+                SQLiteDatabase dbwrite = dataBase.getWritableDatabase();
+                dbwrite.delete("Usuario", "codigo=1", null);
+                dbwrite.close();
+                Intent intent = new Intent(Menu.this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         Button bPerfil= (Button) findViewById(R.id.perfilt);
         bPerfil.setOnClickListener(new OnClickListener() {
 

@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,6 +43,7 @@ public class Register extends Activity implements OnClickListener{
     //ids
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
+    private static final String TAG_ID = "id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +71,7 @@ public class Register extends Activity implements OnClickListener{
         new CreateUser().execute();
 
 
-        Intent intent = new Intent(Register.this,Perfil.class);
-        startActivity(intent);
-        finish();
+
 
     }
 
@@ -92,6 +92,8 @@ public class Register extends Activity implements OnClickListener{
         protected String doInBackground(String... args) {
             // TODO Auto-generated method stub
             // Check for success tag
+            DBHelper dataBase = new DBHelper(Register.this, "DBUsuarios",null,1);
+            SQLiteDatabase dbwrite = dataBase.getWritableDatabase();
             int success;
             username = nom.getText().toString();
             String ano = Integer.toString(fecha.getYear());
@@ -128,7 +130,18 @@ public class Register extends Activity implements OnClickListener{
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
                     Log.d("Usuario Creado!", json.toString());
+                    int codigo = 1;
+                    double cal = 0;
+                    String nombre = json.getString(TAG_ID);
+                    //Insertamos los datos en la tabla Usuarios
+                    dbwrite.execSQL("INSERT INTO Usuario (codigo, id, calorias) " +
+                            "VALUES (" + codigo + ", '" + nombre + "'," + cal + ")");
+                    Intent intent = new Intent(Register.this,Menu.class);
+                    dbwrite.close();
+                    startActivity(intent);
+                    finish();
                     return json.getString(TAG_MESSAGE);
+
 
                 }else{
                     Log.d("Fallo en el registro", json.getString(TAG_MESSAGE));

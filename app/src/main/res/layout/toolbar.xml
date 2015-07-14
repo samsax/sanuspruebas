@@ -14,10 +14,10 @@
             android:layout_height="wrap_content"
             android:drawableTop="@mipmap/ic_perfil"
             android:background="@color/material_deep_teal_500"
+            android:text="perfil"
             android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:text="perfil" />
+            android:layout_toLeftOf="@+id/logout"
+            android:layout_toStartOf="@+id/logout" />
 
         <Button
             android:id="@+id/menut"
@@ -29,6 +29,17 @@
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/perfilt"
             android:layout_toStartOf="@+id/perfilt" />
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/ic_perfil"
+            android:background="@color/material_deep_teal_500"
+            android:text="logout"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
     </RelativeLayout>
 
 

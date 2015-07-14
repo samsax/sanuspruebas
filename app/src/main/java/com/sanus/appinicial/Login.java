@@ -11,6 +11,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -20,7 +22,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.webkit.WebView;
 
 public class Login extends Activity implements OnClickListener {
 
@@ -39,17 +40,38 @@ public class Login extends Activity implements OnClickListener {
     // y poner de la siguiente manera
     // "http://xxx.xxx.x.x:1234/cas/login.php";
 
-    private static final String LOGIN_URL = "http://databasebauq.zz.mu/start/login.php";
+    private static final String LOGIN_URL = "http://databasebauq.zz.mu/start/Login.php";
 
     // La respuesta del JSON es
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
+    private static final String TAG_ID = "id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        DBHelper dataBase = new DBHelper(this, "DBUsuarios",null,1);
+        SQLiteDatabase dbread = dataBase.getReadableDatabase();
+
+        if(dbread != null) {
+
+            //Consultamos si hay usuario
+            Cursor c = dbread.rawQuery(" SELECT id FROM Usuario u WHERE u.codigo=1 ", null);
+            if (c.moveToFirst())
+            {
+                Log.d("Usuario",c.getString(0));
+                dbread.close();
+                Intent i = new Intent(Login.this,Menu.class);
+                finish();
+                startActivity(i);
+            }
+
+            }
+
+        //Cerramos la base de datos
+
         // setup input fields
         user = (EditText) findViewById(R.id.username);
         pass = (EditText) findViewById(R.id.password);
@@ -82,7 +104,8 @@ public class Login extends Activity implements OnClickListener {
     }
 
     class AttemptLogin extends AsyncTask<String, String, String> {
-
+        DBHelper dataBase = new DBHelper(Login.this, "DBUsuarios",null,1);
+        SQLiteDatabase dbwrite = dataBase.getWritableDatabase();
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -114,6 +137,7 @@ public class Login extends Activity implements OnClickListener {
 
                 // json success tag
                 success = json.getInt(TAG_SUCCESS);
+
                 if (success == 1) {
                     Log.d("Login Successful!", json.toString());
                     // save user data
@@ -122,8 +146,19 @@ public class Login extends Activity implements OnClickListener {
                     Editor edit = sp.edit();
                     edit.putString("username", username);
                     edit.commit();
+                    if(dbwrite != null)
+                    {
+                            int codigo = 1;
+                            double cal = 0;
+                            String nombre = json.getString(TAG_ID);
+                            //Insertamos los datos en la tabla Usuarios
+                            dbwrite.execSQL("INSERT INTO Usuario (codigo, id, calorias) " +
+                                    "VALUES (" + codigo + ", '" + nombre +"',"+cal+")");
+                        }
 
-                    Intent i = new Intent(Login.this,Perfil.class);
+                        //Cerramos la base de datos
+                        dbwrite.close();
+                    Intent i = new Intent(Login.this,Menu.class);
                     finish();
                     startActivity(i);
                     return json.getString(TAG_MESSAGE);
