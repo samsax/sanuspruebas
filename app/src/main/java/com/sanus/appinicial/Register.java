@@ -67,16 +67,10 @@ public class Register extends Activity implements OnClickListener{
     @Override
     public void onClick(View v) {
         // TODO Auto-generated method stub
-
         new CreateUser().execute();
-
-
-
-
     }
 
     class CreateUser extends AsyncTask<String, String, String> {
-
 
         @Override
         protected void onPreExecute() {
@@ -158,52 +152,6 @@ public class Register extends Activity implements OnClickListener{
 
 
     }
-/*
-    public Integer age(){
-        Date fechaNac=null;
-        try {
-            /**Se puede cambiar la mascara por el formato de la fecha
-             que se quiera recibir, por ejemplo ano mes dia "yyyy-MM-dd"
-             en este caso es dia mes ano*/
-/*            fechaNac = new SimpleDateFormat("dd-MM-yyyy").parse(date);
-        } catch (Exception ex) {
-            System.out.println("Error:"+ex);
-        }
-        Calendar fechaNacimiento = Calendar.getInstance();
-        Calendar fechaActual = Calendar.getInstance();
-        fechaNacimiento.setTime(fechaNac);
-        int ano = fechaActual.get(Calendar.YEAR)- fecha.getYear();
-        int mes =fechaActual.get(Calendar.MONTH)- fecha.getMonth();
-        int dia = fechaActual.get(Calendar.DATE)- fecha.getDayOfMonth();
-        if(mes<0 || (mes==0 && dia<0)){
-            ano--;
-        }
 
-        return ano;
-    }
-
-
-    public float weigth(){
-        float p = Float.parseFloat(pes);
-        return p;
-    }
-
-    public int height(){
-        float b = Float.parseFloat(alt);
-        int a = (int)b*100;
-        return a;
-    }
-
-    public int gender(){
-
-        int g = Integer.parseInt(sex);
-        return g;
-    }
-
-    public int exercise(){
-        int e = Integer.parseInt(eje);
-        return e;
-    }
-*/
 }
 

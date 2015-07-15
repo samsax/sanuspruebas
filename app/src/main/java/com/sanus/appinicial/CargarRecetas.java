@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
@@ -25,7 +26,7 @@ import java.util.List;
 /**
  * Created by BRIAN on 12/07/2015.
  */
-public class CargarRecetas extends AppCompatActivity {
+public class CargarRecetas extends AppCompatActivity{
 
     JSONParser jsonParser = new JSONParser();
 
@@ -57,8 +58,6 @@ public class CargarRecetas extends AppCompatActivity {
         x.setBoton(message);
         x.execute(message);
 
-        //new LoadAllRecipe().execute();
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
@@ -82,7 +81,6 @@ public class CargarRecetas extends AppCompatActivity {
                 finish();
             }
         });
-        //new LoadAllRecipe().execute();
 
     }
 
@@ -96,7 +94,6 @@ public class CargarRecetas extends AppCompatActivity {
 
         protected String doInBackground(String... args) {
             // Building Parameters
-
 
             lista = new ArrayList<HashMap<String, String>>();
 
@@ -151,8 +148,7 @@ public class CargarRecetas extends AppCompatActivity {
                     /**
                      * Updating parsed JSON data into ListView
                      * */
-                    //setContentView(R.layout.receta);
-                    recetas =(ListView)findViewById(R.id.recetalist);
+                    recetas = (ListView) findViewById(R.id.recetalist);
 
                     ListAdapter adapter = new SimpleAdapter(
                             CargarRecetas.this,
@@ -170,6 +166,7 @@ public class CargarRecetas extends AppCompatActivity {
                     recetas.setAdapter(adapter);
                 }
             });
+
         }
 
     }

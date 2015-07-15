@@ -28,24 +28,8 @@ import java.util.List;
 public class Menu extends AppCompatActivity implements OnClickListener {
 
     public final static String EXTRA_MESSAGE = "com.sanus.appinicial.VerReceta";
-    JSONParser jsonParser = new JSONParser();
 
-    //testing on Emulator:
-    private static final String MENU_URL = "http://databasebauq.zz.mu/start/Menu.php";
-
-    //ids
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_RECETA = "Receta";
-    private static final String TAG_NOMBRE = "nombre";
-    private static final String TAG_CALORIAS = "calorias";
-
-    // products JSONArray
-    JSONArray recetaArray = null;
     Button desayuno, media, almuerzo, algo, comida;
-    ListView recetas;
-    Button volver;
-    ArrayAdapter<String> adaptador;
-    ArrayList<HashMap<String, String>> lista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,8 +88,6 @@ public class Menu extends AppCompatActivity implements OnClickListener {
 
     }
 
-
-
     @Override
     public void onClick(View v) {
 
@@ -132,9 +114,6 @@ public class Menu extends AppCompatActivity implements OnClickListener {
         }
 
         Intent i = new Intent(this, CargarRecetas.class);
-        //Bundle bundle = new Bundle();
-        //bundle.putString("comida", x);
-        //i.putExtras(bundle);
         String message = x;
         i.putExtra(EXTRA_MESSAGE, message);
         startActivity(i);

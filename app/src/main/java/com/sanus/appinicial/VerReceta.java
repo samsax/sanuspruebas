@@ -50,7 +50,7 @@ public class VerReceta extends AppCompatActivity implements View.OnClickListener
 
         switch (v.getId()) {
             case R.id.volver:
-                Intent i = new Intent(this, Receta.class);
+                Intent i = new Intent(this, CargarRecetas.class);
                 startActivity(i);
                 break;
             default:

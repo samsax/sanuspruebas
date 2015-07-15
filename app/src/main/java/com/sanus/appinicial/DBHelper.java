@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
     //Sentencia SQL para crear la tabla de Usuarios
-    String sqlCreate = "IF NOT EXIST CREATE TABLE Usuario (codigo INTEGER, id TEXT,calorias DOUBLE )";
+    String sqlCreate = "CREATE TABLE IF NOT EXISTS Usuario (codigo INTEGER, id TEXT, calorias DOUBLE )";
 
     public DBHelper(Context contexto, String nombre,
                                 CursorFactory factory, int version) {

@@ -33,13 +33,6 @@ public class Login extends Activity implements OnClickListener {
     // Clase JSONParser
     JSONParser jsonParser = new JSONParser();
 
-
-    // si trabajan de manera local "localhost" :
-    // En windows tienen que ir, run CMD > ipconfig
-    // buscar su IP
-    // y poner de la siguiente manera
-    // "http://xxx.xxx.x.x:1234/cas/login.php";
-
     private static final String LOGIN_URL = "http://databasebauq.zz.mu/start/Login.php";
 
     // La respuesta del JSON es

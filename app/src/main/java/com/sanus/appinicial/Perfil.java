@@ -25,8 +25,6 @@ import android.support.v7.widget.Toolbar;
 
 public class Perfil extends AppCompatActivity {
 
-
-
     // Progress Dialog
     private ProgressDialog pDialog;
 
@@ -34,7 +32,6 @@ public class Perfil extends AppCompatActivity {
     JSONParser jParser = new JSONParser();
 
     ArrayList<HashMap<String, String>> List;
-
 
     // url to get all products list
     private static String url = "http://databasebauq.zz.mu/start/Calcular_Datos.php";
@@ -45,8 +42,6 @@ public class Perfil extends AppCompatActivity {
     private static final String TAG_IMC = "IMC";
     private static final String TAG_PesoI = "PesoIdeal";
     private static final String TAG_TMB = "TMB";
-    // products JSONArray
-    JSONArray products = null;
 
     //ListView Lista;
     TextView IMC, pesoI, TMB, name;
@@ -85,8 +80,7 @@ public class Perfil extends AppCompatActivity {
         List = new ArrayList<HashMap<String, String>>();
 
         // Cargar los productos en el Background Thread
-        new LoadAllProducts().execute();
-        //Lista = (ListView) findViewById(R.id.listAll);
+        new LoadInfo().execute();
         IMC = (TextView) findViewById(R.id.textIMC);
         pesoI = (TextView) findViewById(R.id.textPesoIdeal);
         TMB = (TextView) findViewById(R.id.textTMB);
@@ -107,7 +101,7 @@ public class Perfil extends AppCompatActivity {
 
 
 
-    class LoadAllProducts extends AsyncTask<String, String, String> {
+    class LoadInfo extends AsyncTask<String, String, String> {
 
         /**
          * Antes de empezar el background thread Show Progress Dialog
