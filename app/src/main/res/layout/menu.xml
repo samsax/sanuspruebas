@@ -6,6 +6,7 @@
 
 
     <TableLayout
+        android:background="@drawable/menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <include
@@ -13,15 +14,36 @@
             layout="@layout/toolbar">
         </include>
 
-        <TextView
-            style="@style/Header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Agrega tu comida"
-            android:drawableLeft="@mipmap/ic_launcher"
-            android:id="@+id/textView10"
-            android:layout_column="2"
-            android:textAlignment="center" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/Header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agrega tu comida"
+                android:id="@+id/textView10"
+                android:textColor="@color/blue"
+                android:textSize="30sp"
+                android:layout_column="2"
+                android:textAlignment="center" />
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px"
+                android:layout_column="2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px"
+                android:layout_column="2" />
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
@@ -57,6 +79,16 @@
 
             <Space
                 android:layout_width="20px"
+                android:layout_height="20px"
+                android:layout_column="2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="20px"
                 android:layout_height="20px" />
 
             <Button
@@ -66,6 +98,16 @@
                 android:background="@drawable/button"
                 android:text="Media Mañana"
                 android:drawableRight="@mipmap/ic_media"
+                android:layout_column="2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px"
                 android:layout_column="2" />
         </TableRow>
 
@@ -91,6 +133,16 @@
 
             <Space
                 android:layout_width="20px"
+                android:layout_height="20px"
+                android:layout_column="2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="20px"
                 android:layout_height="20px" />
 
             <Button
@@ -100,6 +152,16 @@
                 android:text="Algo"
                 android:drawableRight="@mipmap/ic_algo"
                 android:background="@drawable/button"
+                android:layout_column="2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px"
                 android:layout_column="2" />
         </TableRow>
 

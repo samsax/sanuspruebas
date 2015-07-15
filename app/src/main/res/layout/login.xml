@@ -52,7 +52,10 @@
         android:gravity="center"
         android:text="Login Sanus"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:drawableTop="@mipmap/ic_launcher"
+        android:textColor="@color/blue"/>
 
 
     <TextView
@@ -62,7 +65,9 @@
         android:layout_above="@+id/password"
         android:layout_alignLeft="@+id/password"
         android:layout_marginLeft="22dp"
-        android:text="@string/password" />
+        android:text="@string/password"
+        android:textColor="@color/blue"
+        android:textSize="20sp"/>
 
     <EditText
         style="@style/EditTextStyle"
@@ -80,6 +85,8 @@
         android:text="@string/username"
         android:layout_above="@+id/username"
         android:layout_alignRight="@+id/TextView01"
-        android:layout_alignEnd="@+id/TextView01" />
+        android:layout_alignEnd="@+id/TextView01"
+        android:textColor="@color/blue"
+        android:textSize="20sp"/>
 
 </RelativeLayout>

@@ -10,7 +10,7 @@
     <ListView
         android:background="@drawable/listview"
         android:layout_width="wrap_content"
-        android:layout_height="222dp"
+        android:layout_height="match_parent"
         android:id="@+id/recetalist" />
 
 </LinearLayout>

@@ -4,6 +4,8 @@
     android:layout_height="match_parent">
 
     <TableLayout
+        android:theme="@android:style/Theme.Holo"
+        android:background="@drawable/registro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -11,7 +13,7 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
         tools:context=".inicio"
-        >
+        android:id="@+id/tabla">
 
         <TextView
             style="@style/Header"
@@ -20,6 +22,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/textView"
             android:text="Registro"
+            android:textStyle="bold"
+            android:textColor="@color/white"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -47,11 +51,10 @@
                 android:text="@string/Nombre"
                 android:id="@+id/textView2"
                 android:layout_column="0"
-                android:textSize="15sp" />
+                android:textSize="20sp" />
         </TableRow>
 
         <EditText
-            style="@style/EditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
@@ -75,11 +78,11 @@
                 android:text="@string/Contra"
                 android:id="@+id/textView8"
                 android:layout_column="0"
-                android:textSize="15sp" />
+                android:textSize="20sp" />
         </TableRow>
 
         <EditText
-            style="@style/EditTextStyle"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -98,11 +101,11 @@
                 android:text="@string/Genero"
                 android:id="@+id/textView7"
                 android:layout_column="0"
-                android:textSize="15sp" />
+                android:textSize="20sp" />
         </TableRow>
 
         <Spinner
-            style="@style/EditTextStyle"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/genero"
@@ -120,11 +123,10 @@
                 android:text="@string/Ejercicio"
                 android:id="@+id/textView3"
                 android:layout_column="0"
-                android:textSize="15sp" />
+                android:textSize="20sp" />
         </TableRow>
 
         <Spinner
-            style="@style/EditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ejercicio"
@@ -142,11 +144,10 @@
                 android:text="@string/Altura"
                 android:id="@+id/textView4"
                 android:layout_column="0"
-                android:textSize="15sp" />
+                android:textSize="20sp" />
         </TableRow>
 
         <EditText
-            style="@style/EditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
@@ -169,11 +170,10 @@
                 android:text="@string/Peso"
                 android:id="@+id/textView6"
                 android:layout_column="0"
-                android:textSize="15sp" />
+                android:textSize="20sp" />
         </TableRow>
 
         <EditText
-            style="@style/EditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
@@ -197,18 +197,23 @@
                 android:text="@string/Nacimiento"
                 android:id="@+id/textView5"
                 android:layout_column="0"
-                android:textSize="15sp" />
+                android:textSize="20sp" />
         </TableRow>
 
         <TableRow
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:baselineAligned="false">
 
             <DatePicker
-                style="@style/EditTextStyle"
+                android:datePickerMode="spinner"
+                android:calendarViewShown="false"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/fecha"
+                android:endYear="2000"
+
+                android:calendarTextColor="@color/black"
                 android:layout_column="0"
                 android:layout_gravity="top|right" />
         </TableRow>
