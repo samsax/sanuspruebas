@@ -51,7 +51,7 @@ public class Login extends Activity implements OnClickListener {
         if(dbread != null) {
 
             //Consultamos si hay usuario
-            Cursor c = dbread.rawQuery(" SELECT id FROM Usuario u WHERE u.codigo=1 ", null);
+            Cursor c = dbread.rawQuery(" SELECT id FROM Usuario WHERE codigo=1 ", null);
             if (c.moveToFirst())
             {
                 Log.d("Usuario",c.getString(0));

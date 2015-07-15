@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -22,6 +23,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by BRIAN on 12/07/2015.
@@ -53,7 +55,7 @@ public class CargarRecetas extends AppCompatActivity{
         Intent intent = getIntent();
         String message = intent.getStringExtra(Menu.EXTRA_MESSAGE);
         Bundle bundle = getIntent().getExtras();
-        Log.e("intent",message);
+        Log.e("intent", message);
         LoadAllRecipe x =new LoadAllRecipe();
         x.setBoton(message);
         x.execute(message);
@@ -150,7 +152,7 @@ public class CargarRecetas extends AppCompatActivity{
                      * */
                     recetas = (ListView) findViewById(R.id.recetalist);
 
-                    ListAdapter adapter = new SimpleAdapter(
+                    final ListAdapter adapter = new SimpleAdapter(
                             CargarRecetas.this,
                             lista,
                             android.R.layout.two_line_list_item,
@@ -164,6 +166,27 @@ public class CargarRecetas extends AppCompatActivity{
                             });
                     // updating listview
                     recetas.setAdapter(adapter);
+                    recetas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view,
+                                                int position, long id) {
+                            Object adapterItem = adapter.getItem(position);
+                            String contenidoCadena = adapterItem.toString();
+                            int i = contenidoCadena.indexOf("=");
+                            int j = contenidoCadena.indexOf(",");
+                            contenidoCadena = contenidoCadena.substring(i+1,j);
+                            Log.d("Cadena",contenidoCadena);
+                            Intent in;
+                            in = new Intent(getApplicationContext(),
+                                    VerReceta.class);
+                            // sending pid to next activity
+                            in.putExtra("resultado", contenidoCadena);
+                            // starting new activity and expecting some response back
+                            startActivityForResult(in, 100);
+                        }
+                    });
+
                 }
             });
 

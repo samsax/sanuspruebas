@@ -33,6 +33,7 @@
     <string name="drawer_open">Navigation Abierta</string>
     <string name="drawer_close">Navigation Cerrada</string>
     <string name="Menu">Menu</string>
+    <string name="cantidad">Cantidad en gramos</string>
 
 
 </resources>
