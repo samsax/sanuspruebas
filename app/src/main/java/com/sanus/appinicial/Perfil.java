@@ -91,7 +91,7 @@ public class Perfil extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Perfil.this, Menu.class);
+                Intent intent = new Intent(Perfil.this, Editar.class);
                 startActivity(intent);
                 finish();
             }

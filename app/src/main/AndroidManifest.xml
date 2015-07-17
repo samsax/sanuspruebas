@@ -23,6 +23,7 @@
         <activity android:name=".Menu"></activity>
         <activity android:name=".CargarRecetas"></activity>
         <activity android:name=".VerReceta"></activity>
+        <activity android:name=".Editar"></activity>
     </application>
 
 </manifest>
