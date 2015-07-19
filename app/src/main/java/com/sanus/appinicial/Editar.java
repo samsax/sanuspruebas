@@ -27,6 +27,7 @@ public class Editar extends Activity implements OnClickListener {
     private DatePicker fecha;
     private Spinner nejer, gen;
     private Button bEditar;
+    String id;
 
     private static String username, date, pass, alt, pes, eje, sex = "";
 
@@ -40,8 +41,8 @@ public class Editar extends Activity implements OnClickListener {
     // private static final String REGISTER_URL = "http://xxx.xxx.x.x:1234/cas/register.php";
 
     //testing on Emulator:
-    private static final String EDITAR_URL = "http://databasebauq.zz.mu/start/Buscar_Usuario.php";
-
+    private static final String BUSCA_URL = "http://databasebauq.zz.mu/start/Buscar_Usuario.php";
+    private static final String EDITAR_URL = "http://databasebauq.zz.mu/start/Actualizar.php";
     //ids
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
@@ -69,16 +70,16 @@ public class Editar extends Activity implements OnClickListener {
     @Override
     public void onClick(View v) {
         // TODO Auto-generated method stub
-        new CreateUser().execute();
+        new EditUser().execute();
     }
 
-    class CreateUser extends AsyncTask<String, String, String> {
+    class EditUser extends AsyncTask<String, String, String> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(Editar.this);
-            pDialog.setMessage("Creando el Usuario...");
+            pDialog.setMessage("Actualizando el Usuario...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
@@ -105,16 +106,17 @@ public class Editar extends Activity implements OnClickListener {
             try {
                 // Building Parameters
                 List params = new ArrayList();
+                params.add(new BasicNameValuePair("id",id));
                 params.add(new BasicNameValuePair("nombre", username));
                 params.add(new BasicNameValuePair("altura", alt));
-                params.add(new BasicNameValuePair("fecha", date));
+                params.add(new BasicNameValuePair("fNacimiento", date));
                 params.add(new BasicNameValuePair("peso", pes));
                 params.add(new BasicNameValuePair("ejercicio", eje));
                 params.add(new BasicNameValuePair("genero", sex));
                 params.add(new BasicNameValuePair("contrasena", pass));
 
 
-                Log.d("request!", "starting");
+                Log.d("parametros", params.toString());
 
                 //Posting user data to script
                 JSONObject json = jsonParser.makeHttpRequest(EDITAR_URL, "POST", params);
@@ -124,8 +126,8 @@ public class Editar extends Activity implements OnClickListener {
 
                 // json success element
                 success = json.getInt(TAG_SUCCESS);
-                if (success == 1) {
-                    Log.d("Usuario Creado!", json.toString());
+                if (success > 0) {
+                    Log.d("Usuario Editado!", json.toString());
                     int codigo = 1;
                     double cal = 0;
                     String nombre = json.getString(TAG_ID);
@@ -171,11 +173,11 @@ public class Editar extends Activity implements OnClickListener {
                 Cursor c = dbread.rawQuery(" SELECT id FROM Usuario WHERE codigo=1 ", null);
                 if (c.moveToFirst()) {
                     Log.d("id", c.getString(0));
-                    String id = c.getString(0);
+                    id = c.getString(0);
                     dbread.close();
                     List params = new ArrayList();
                     params.add(new BasicNameValuePair(TAG_ID, id));
-                    JSONObject json = jsonParser.makeHttpRequest(EDITAR_URL, "POST", params);
+                    JSONObject json = jsonParser.makeHttpRequest(BUSCA_URL, "POST", params);
                     try {
 
                          fechaNacimiento = json.getString("fechaNacimiento");
