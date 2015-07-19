@@ -6,7 +6,7 @@
 
 
     <TableLayout
-        android:background="@drawable/menu"
+        android:background="@drawable/menu2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <include
@@ -18,21 +18,33 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px"
+                android:layout_column="1"
+                android:layout_span="3" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
             <TextView
                 style="@style/Header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Agrega tu comida"
+                android:textStyle="bold"
                 android:id="@+id/textView10"
-                android:textColor="@color/blue"
+                android:textColor="@color/black"
                 android:textSize="30sp"
-                android:layout_column="2"
+                android:layout_column="3"
                 android:textAlignment="center" />
 
             <Space
                 android:layout_width="20px"
                 android:layout_height="20px"
-                android:layout_column="2" />
+                android:layout_column="4" />
         </TableRow>
 
         <TableRow
@@ -42,7 +54,7 @@
             <Space
                 android:layout_width="20px"
                 android:layout_height="20px"
-                android:layout_column="2" />
+                android:layout_column="3" />
         </TableRow>
 
         <TableRow
@@ -63,13 +75,13 @@
                 android:id="@+id/desayunoButton"
                 android:text="Desayuno"
                 android:drawableRight="@mipmap/ic_desayuno"
-                android:layout_column="2"
+                android:layout_column="3"
                 />
 
             <Space
                 android:layout_width="20px"
                 android:layout_height="20px"
-                android:layout_column="4" />
+                android:layout_column="5" />
 
         </TableRow>
 
@@ -80,7 +92,7 @@
             <Space
                 android:layout_width="20px"
                 android:layout_height="20px"
-                android:layout_column="2" />
+                android:layout_column="3" />
         </TableRow>
 
         <TableRow
@@ -98,7 +110,7 @@
                 android:background="@drawable/button"
                 android:text="Media Mañana"
                 android:drawableRight="@mipmap/ic_media"
-                android:layout_column="2" />
+                android:layout_column="3" />
         </TableRow>
 
         <TableRow
@@ -108,7 +120,7 @@
             <Space
                 android:layout_width="20px"
                 android:layout_height="20px"
-                android:layout_column="2" />
+                android:layout_column="3" />
         </TableRow>
 
         <TableRow
@@ -123,7 +135,7 @@
                 android:text="Almuerzo"
                 android:drawableRight="@mipmap/ic_almu"
                 android:background="@drawable/button"
-                android:layout_column="2" />
+                android:layout_column="3" />
 
         </TableRow>
 
@@ -134,7 +146,7 @@
             <Space
                 android:layout_width="20px"
                 android:layout_height="20px"
-                android:layout_column="2" />
+                android:layout_column="3" />
         </TableRow>
 
         <TableRow
@@ -152,7 +164,7 @@
                 android:text="Algo"
                 android:drawableRight="@mipmap/ic_algo"
                 android:background="@drawable/button"
-                android:layout_column="2" />
+                android:layout_column="3" />
         </TableRow>
 
         <TableRow
@@ -162,7 +174,7 @@
             <Space
                 android:layout_width="20px"
                 android:layout_height="20px"
-                android:layout_column="2" />
+                android:layout_column="3" />
         </TableRow>
 
         <TableRow
@@ -176,7 +188,7 @@
                 android:text="Cena"
                 android:drawableRight="@mipmap/ic_cena"
                 android:background="@drawable/button"
-                android:layout_column="2" />
+                android:layout_column="3" />
 
         </TableRow>
 

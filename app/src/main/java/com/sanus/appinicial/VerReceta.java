@@ -2,6 +2,8 @@ package com.sanus.appinicial;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -30,14 +32,20 @@ import java.util.List;
 public class VerReceta extends AppCompatActivity implements View.OnClickListener {
     JSONParser jsonParser = new JSONParser();
 
-
+    private static final String ADD_URL="http://databasebauq.zz.mu/start/Sumar_Calorias.php";
     private static final String MENU_URL = "http://databasebauq.zz.mu/start/Ver_Recetas.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_URL = "url";
     private static final String TAG_NOMBRE = "nombre";
     private static final String TAG_CALORIAS = "calorias";
+    private static final String TAG_CALDIA = "caloriasDia";
     WebView webview;
     TextView title;
+    String rnombre;
+    String rcalorias;
+    String rurl;
+    String id;
+    int calorias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,16 +86,16 @@ public class VerReceta extends AppCompatActivity implements View.OnClickListener
                 finish();
             }
         });
-         Button volver=(Button)findViewById(R.id.volver);
-        volver.setOnClickListener(this);
+         Button agregar=(Button)findViewById(R.id.agregar);
+        agregar.setOnClickListener(this);
     }
 
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.volver:
-                Intent i = new Intent(this, CargarRecetas.class);
-                startActivity(i);
+            case R.id.agregar:
+                new AgregarCalorias().execute();
+
                 break;
             default:
                 break;
@@ -97,9 +105,7 @@ public class VerReceta extends AppCompatActivity implements View.OnClickListener
     class LoadAllRecipe extends AsyncTask<String, String, String> {
 
         private String b="";
-        String rnombre;
-        int rcalorias;
-        String rurl;
+
 
         public void setBoton(String x){
             this.b=x;
@@ -124,7 +130,7 @@ public class VerReceta extends AppCompatActivity implements View.OnClickListener
                 if (success == 1) {
                     Log.d("VerRecetas: ", js.toString());
                      rnombre = js.getString(TAG_NOMBRE);
-                     rcalorias = js.getInt(TAG_CALORIAS);
+                     rcalorias = js.getString(TAG_CALORIAS);
                      rurl = js.getString(TAG_URL);
                 }
             } catch (JSONException e) {
@@ -142,6 +148,51 @@ public class VerReceta extends AppCompatActivity implements View.OnClickListener
 
             });
         }
+    }
+    class AgregarCalorias extends AsyncTask<String, String, String> {
+        DBHelper dataBase = new DBHelper(VerReceta.this, "DBUsuarios", null, 1);
+        SQLiteDatabase dbread = dataBase.getReadableDatabase();
+        SQLiteDatabase dbwrite = dataBase.getWritableDatabase();
+
+        private String b="";
+
+        protected String doInBackground(String... args) {
+            // Building Parameters
+
+            Cursor c = dbread.rawQuery("SELECT id FROM Usuario WHERE codigo=1 ", null);
+            if (c.moveToFirst()) {
+                Log.d("id", c.getString(0));
+                id = c.getString(0);
+                List params = new ArrayList();
+                params.add(new BasicNameValuePair("calorias", rcalorias));
+                params.add(new BasicNameValuePair("id", id));
+                // getting JSON string from URL
+                JSONObject js = jsonParser.makeHttpRequest(ADD_URL, "POST", params);
+
+                // Check your log cat for JSON reponse
+                Log.d("Recetas: ", js.toString());
+                try {
+                    // Checking for SUCCESS TAG
+                    int success = js.getInt(TAG_SUCCESS);
+
+                    if (success == 1) {
+                        calorias = js.getInt(TAG_CALDIA);
+                        dbwrite.execSQL ("UPDATE Usuario " +
+                                "SET calorias =" + calorias +
+                                " WHERE id =" + id+";");
+                        dbwrite.close();
+                        Intent i = new Intent(VerReceta.this, Menu.class);
+                        startActivity(i);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            return null;
+        }
+
+
     }
 }
 
