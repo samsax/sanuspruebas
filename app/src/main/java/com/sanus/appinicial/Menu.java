@@ -1,10 +1,15 @@
 package com.sanus.appinicial;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -45,7 +50,7 @@ public class Menu extends AppCompatActivity implements OnClickListener {
 
             @Override
             public void onClick(View v) {
-                DBHelper dataBase = new DBHelper(Menu.this, "DBUsuarios",null,1);
+                DBHelper dataBase = new DBHelper(Menu.this, "DBUsuarios", null, 1);
                 SQLiteDatabase dbwrite = dataBase.getWritableDatabase();
                 dbwrite.delete("Usuario", "codigo=1", null);
                 dbwrite.close();
@@ -64,6 +69,7 @@ public class Menu extends AppCompatActivity implements OnClickListener {
                 finish();
             }
         });
+
         Button bMen= (Button) findViewById(R.id.menut);
         bMen.setText("inicio");
         Drawable top = getResources().getDrawable(R.mipmap.ic_inicio);

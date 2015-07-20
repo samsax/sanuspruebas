@@ -40,11 +40,6 @@
                 android:textSize="30sp"
                 android:layout_column="3"
                 android:textAlignment="center" />
-
-            <Space
-                android:layout_width="20px"
-                android:layout_height="20px"
-                android:layout_column="4" />
         </TableRow>
 
         <TableRow
