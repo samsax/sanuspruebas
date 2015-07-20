@@ -3,16 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    android:background="@drawable/inicio">
+    >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:background="@drawable/background"
         >
         <include
             android:id="@+id/toolbar"
-            layout="@layout/toolbar">
+            layout="@layout/toolbar"
+            >
         </include>
         <TextView
             android:id="@+id/hola"
@@ -21,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/blue"
-            android:text="Hola: "
+            android:text="Hola  "
             android:textSize="40sp" />
 
             <Space
@@ -30,9 +32,10 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+
             android:id="@+id/textIMC"
             style="@style/EditTextStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/suIMC"
             android:textSize="20sp" />
@@ -44,7 +47,7 @@
             <TextView
             android:id="@+id/textPesoIdeal"
             style="@style/EditTextStyle"
-            android:layout_width="wrap_content"
+                android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/pesoIdeal"
             android:textSize="20sp" />

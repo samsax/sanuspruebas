@@ -5,7 +5,7 @@
 
     <TableLayout
         android:theme="@android:style/Theme.Holo"
-        android:background="@drawable/registro"
+        android:background="@drawable/background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -55,7 +55,7 @@
         </TableRow>
 
         <EditText
-            android:background="@drawable/spinner"
+            style="@style/EditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
@@ -83,7 +83,7 @@
         </TableRow>
 
         <EditText
-            android:background="@drawable/spinner"
+            style="@style/EditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -106,6 +106,7 @@
         </TableRow>
 
         <Spinner
+            style="@style/EditTextStyle"
             android:background="@drawable/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -128,6 +129,7 @@
         </TableRow>
 
         <Spinner
+            style="@style/EditTextStyle"
             android:background="@drawable/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -150,7 +152,7 @@
         </TableRow>
 
         <EditText
-            android:background="@drawable/spinner"
+            style="@style/EditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
@@ -177,7 +179,7 @@
         </TableRow>
 
         <EditText
-            android:background="@drawable/spinner"
+            style="@style/EditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
@@ -210,13 +212,12 @@
             android:baselineAligned="false">
 
             <DatePicker
-                android:datePickerMode="spinner"
+                android:background="@drawable/spinner"
                 android:calendarViewShown="false"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/fecha"
                 android:endYear="2000"
-                android:background="@drawable/spinner"
                 android:calendarTextColor="@color/black"
                 android:layout_column="0"
                 android:layout_gravity="top|right" />

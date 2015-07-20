@@ -42,12 +42,13 @@ public class Inicio extends AppCompatActivity {
     private static final String TAG_MESSAGE = "mensaje";
     private static final String TAG_TMB = "TMB";
     private static final String TAG_CAL = "caloriasDia";
+    private static final String TAG_PESO = "pesoMes";
 
 
     //ListView Lista;
     TextView tdia, pesoM, tsug, tmensaje;
     int success;
-    String cal, tmb, M;
+    String cal, tmb, M,P;
     Button bfindia;
 
     @Override
@@ -160,8 +161,13 @@ public class Inicio extends AppCompatActivity {
 
             try{
                 success = json.getInt(TAG_SUCCESS);
-                M = json.getString(TAG_MESSAGE);
-
+                if(success==2) {
+                    M = json.getString(TAG_MESSAGE);
+                }
+                else
+                {
+                    P = json.getString(TAG_PESO);
+                }
 
             }catch (JSONException e){
                 e.printStackTrace();
@@ -179,11 +185,17 @@ public class Inicio extends AppCompatActivity {
             // updating UI from Background Thread
             runOnUiThread(new Runnable() {
                 public void run() {
-
-                    bfindia.setVisibility(View.INVISIBLE);
-                    tmensaje.setVisibility(View.VISIBLE);
-                    tmensaje.setText(M);
-
+                    if (success==1)
+                    {
+                        bfindia.setVisibility(View.INVISIBLE);
+                        tmensaje.setVisibility(View.VISIBLE);
+                        tmensaje.setText("Tu peso en un mes será:"+P);
+                    }
+                    else {
+                        bfindia.setVisibility(View.INVISIBLE);
+                        tmensaje.setVisibility(View.VISIBLE);
+                        tmensaje.setText(M);
+                    }
                 }
             });
         }

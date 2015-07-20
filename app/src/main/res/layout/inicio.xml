@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="@drawable/menu1"
+    android:layout_height="match_parent" android:background="@drawable/background"
     android:weightSum="1">
     <include
         android:id="@+id/toolbar"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Calorias del dia: \n"
         android:id="@+id/dia"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="30sp" />
 
     <TextView
@@ -21,26 +21,20 @@
         android:layout_height="wrap_content"
         android:text="Calorias sugeridas: \n"
         android:id="@+id/sugeridas"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="30sp" />
 
-    TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tu peso en un mes sera: "
-        android:id="@+id/peso"
-        android:textColor="@color/white"
-        android:textSize="30sp" />
-
-    <TextView
+  <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mensaje"
         android:id="@+id/mensaje"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="30sp" />
 
     <Button
+        android:background="@drawable/button"
+        style="@style/button_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Terminar dia"

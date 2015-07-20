@@ -152,10 +152,9 @@ public class Editar extends AppCompatActivity implements OnClickListener {
                 params.add(new BasicNameValuePair("ejercicio", eje));
                 params.add(new BasicNameValuePair("genero", sex));
                 params.add(new BasicNameValuePair("contrasena", pass));
-
-
-                Log.d("parametros", params.toString());
-                if (pass == contrasena) {
+                Log.d("param", "." + contrasena + ".");
+                Log.d("parametros","."+pass+ ".");
+                if (pass.equals(contrasena)) {
                     //Posting user data to script
                     JSONObject json = jsonParser.makeHttpRequest(EDITAR_URL, "POST", params);
 
