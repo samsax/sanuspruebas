@@ -56,7 +56,7 @@ public class Login extends Activity implements OnClickListener {
             {
                 Log.d("Usuario",c.getString(0));
                 dbread.close();
-                Intent i = new Intent(Login.this,Menu.class);
+                Intent i = new Intent(Login.this,Inicio.class);
                 finish();
                 startActivity(i);
             }

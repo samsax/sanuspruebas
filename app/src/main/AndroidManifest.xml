@@ -24,6 +24,7 @@
         <activity android:name=".CargarRecetas"></activity>
         <activity android:name=".VerReceta"></activity>
         <activity android:name=".Editar"></activity>
+        <activity android:name=".Inicio"></activity>
     </application>
 
 </manifest>

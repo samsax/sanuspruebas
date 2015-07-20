@@ -130,7 +130,7 @@ public class Register extends Activity implements OnClickListener{
                     //Insertamos los datos en la tabla Usuarios
                     dbwrite.execSQL("INSERT INTO Usuario (codigo, id, calorias) " +
                             "VALUES (" + codigo + ", '" + nombre + "'," + cal + ")");
-                    Intent intent = new Intent(Register.this,Menu.class);
+                    Intent intent = new Intent(Register.this,Perfil.class);
                     dbwrite.close();
                     startActivity(intent);
                     finish();

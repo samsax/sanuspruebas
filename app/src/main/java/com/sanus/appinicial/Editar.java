@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,14 +24,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Editar extends Activity implements OnClickListener {
+public class Editar extends AppCompatActivity implements OnClickListener {
     private EditText nom, altura, peso, contra;
     private DatePicker fecha;
     private Spinner nejer, gen;
     private Button bEditar;
     String id;
 
-    private static String username, date, pass, alt, pes, eje, sex = "";
+    private static String username, date, pass, alt, pes, eje, sex,contrasena = "";
 
     // Progress Dialog
     private ProgressDialog pDialog;
@@ -63,6 +65,42 @@ public class Editar extends Activity implements OnClickListener {
         gen = (Spinner) findViewById(R.id.genero);
         bEditar = (Button) findViewById(R.id.actualizar);
         bEditar.setOnClickListener(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setLogo(R.mipmap.ic_launcher);
+        Button bPerfil= (Button) findViewById(R.id.perfilt);
+        bPerfil.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Editar.this, Perfil.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        Button bMen= (Button) findViewById(R.id.menut);
+        bMen.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Editar.this, Menu.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        Button bLogout= (Button) findViewById(R.id.logout);
+        bLogout.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                DBHelper dataBase = new DBHelper(Editar.this, "DBUsuarios",null,1);
+                SQLiteDatabase dbwrite = dataBase.getWritableDatabase();
+                dbwrite.delete("Usuario", "codigo=1", null);
+                dbwrite.close();
+                Intent intent = new Intent(Editar.this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         new CargarDatos().execute();
 
     }
@@ -74,7 +112,7 @@ public class Editar extends Activity implements OnClickListener {
     }
 
     class EditUser extends AsyncTask<String, String, String> {
-
+        int igual = 0;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -106,7 +144,7 @@ public class Editar extends Activity implements OnClickListener {
             try {
                 // Building Parameters
                 List params = new ArrayList();
-                params.add(new BasicNameValuePair("id",id));
+                params.add(new BasicNameValuePair("id", id));
                 params.add(new BasicNameValuePair("nombre", username));
                 params.add(new BasicNameValuePair("altura", alt));
                 params.add(new BasicNameValuePair("fNacimiento", date));
@@ -117,45 +155,54 @@ public class Editar extends Activity implements OnClickListener {
 
 
                 Log.d("parametros", params.toString());
+                if (pass == contrasena) {
+                    //Posting user data to script
+                    JSONObject json = jsonParser.makeHttpRequest(EDITAR_URL, "POST", params);
 
-                //Posting user data to script
-                JSONObject json = jsonParser.makeHttpRequest(EDITAR_URL, "POST", params);
+                    // full json response
+                    Log.d("Registering attempt", json.toString());
 
-                // full json response
-                Log.d("Registering attempt", json.toString());
-
-                // json success element
-                success = json.getInt(TAG_SUCCESS);
-                if (success > 0) {
-                    Log.d("Usuario Editado!", json.toString());
-                    int codigo = 1;
-                    double cal = 0;
-                    String nombre = json.getString(TAG_ID);
-                    //Insertamos los datos en la tabla Usuarios
-                    dbwrite.execSQL("INSERT INTO Usuario (codigo, id, calorias) " +
-                            "VALUES (" + codigo + ", '" + nombre + "'," + cal + ")");
-                    Intent intent = new Intent(Editar.this, Menu.class);
-                    dbwrite.close();
-                    startActivity(intent);
-                    finish();
-                    return json.getString(TAG_MESSAGE);
-
-
-                } else {
-                    Log.d("Fallo en el registro", json.getString(TAG_MESSAGE));
-                    return json.getString(TAG_MESSAGE);
-
+                    // json success element
+                    success = json.getInt(TAG_SUCCESS);
+                    if (success > 0) {
+                        Log.d("Usuario Editado!", json.toString());
+                        igual = 1;
+                        Intent intent = new Intent(Editar.this, Perfil.class);
+                        startActivity(intent);
+                        finish();
+                        return json.getString(TAG_MESSAGE);
+                    } else {
+                        Log.d("Fallo en el registro", json.getString(TAG_MESSAGE));
+                        return json.getString(TAG_MESSAGE);
+                    }
+                }
+                else {
+                    Log.d("Fallo en el registro","error contra");
+                    return null;
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
             return null;
-
         }
+        protected void onPostExecute(String file_url) {
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    if(igual == 0){
+                        pDialog.cancel();
+                        pDialog = new ProgressDialog(Editar.this);
+                        pDialog.setMessage("Error en la contraseña");
+                        pDialog.setIndeterminate(false);
+                        pDialog.setCancelable(true);
+                        pDialog.show();
+                    }
+                }
 
+            });
+                }
 
     }
+
 
     class CargarDatos extends AsyncTask<String, String, String> {
         String fechaNacimiento;
@@ -186,6 +233,8 @@ public class Editar extends Activity implements OnClickListener {
                          ejecicioN = json.getString("ejercicio");
                         nombre = json.getString("nombre");
                         pesoN = json.getString("peso");
+                        contrasena = json.getString("contrasena");
+                        Log.d("contra",contrasena);
                     }
                 catch (JSONException e) {
                     e.printStackTrace();

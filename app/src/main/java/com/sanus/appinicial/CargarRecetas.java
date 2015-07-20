@@ -1,6 +1,7 @@
 package com.sanus.appinicial;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -81,6 +82,20 @@ public class CargarRecetas extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CargarRecetas.this, Menu.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        Button bLogout= (Button) findViewById(R.id.logout);
+        bLogout.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                DBHelper dataBase = new DBHelper(CargarRecetas.this, "DBUsuarios",null,1);
+                SQLiteDatabase dbwrite = dataBase.getWritableDatabase();
+                dbwrite.delete("Usuario", "codigo=1", null);
+                dbwrite.close();
+                Intent intent = new Intent(CargarRecetas.this, Login.class);
                 startActivity(intent);
                 finish();
             }

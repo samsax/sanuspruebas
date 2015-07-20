@@ -1,6 +1,7 @@
 package com.sanus.appinicial;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -64,11 +65,14 @@ public class Menu extends AppCompatActivity implements OnClickListener {
             }
         });
         Button bMen= (Button) findViewById(R.id.menut);
+        bMen.setText("inicio");
+        Drawable top = getResources().getDrawable(R.mipmap.ic_inicio);
+        bMen.setCompoundDrawablesWithIntrinsicBounds(null,top,null,null);
         bMen.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, Menu.class);
+                Intent intent = new Intent(Menu.this, Inicio.class);
                 startActivity(intent);
                 finish();
             }

@@ -86,6 +86,20 @@ public class VerReceta extends AppCompatActivity implements View.OnClickListener
                 finish();
             }
         });
+        Button bLogout= (Button) findViewById(R.id.logout);
+        bLogout.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                DBHelper dataBase = new DBHelper(VerReceta.this, "DBUsuarios",null,1);
+                SQLiteDatabase dbwrite = dataBase.getWritableDatabase();
+                dbwrite.delete("Usuario", "codigo=1", null);
+                dbwrite.close();
+                Intent intent = new Intent(VerReceta.this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
          Button agregar=(Button)findViewById(R.id.agregar);
         agregar.setOnClickListener(this);
     }

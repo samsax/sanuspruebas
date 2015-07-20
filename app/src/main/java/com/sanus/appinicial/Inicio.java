@@ -7,23 +7,23 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import android.view.View.OnClickListener;
-import android.support.v7.widget.Toolbar;
 
 
-public class Perfil extends AppCompatActivity {
+public class Inicio extends AppCompatActivity {
 
     // Progress Dialog
     private ProgressDialog pDialog;
@@ -34,25 +34,23 @@ public class Perfil extends AppCompatActivity {
     ArrayList<HashMap<String, String>> List;
 
     // url to get all products list
-    private static String url = "http://databasebauq.zz.mu/start/Calcular_Datos.php";
+    private static String url = "http://databasebauq.zz.mu/start/Fin_Dia.php";
 
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
-    private static final String TAG_NOMBRE = "nombre";
-    private static final String TAG_IMC = "IMC";
-    private static final String TAG_PesoI = "PesoIdeal";
-    private static final String TAG_TMB = "TMB";
+    private static final String TAG_PesoM = "pesoMes";
+
 
     //ListView Lista;
-    TextView IMC, pesoI, TMB, name;
+    TextView tdia, pesoM, tsug, tmensaje;
     int success;
     String I, T, P, N;
-    Button bMenu;
+    Button bfindia;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.perfil);
+        setContentView(R.layout.inicio);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.ic_launcher);
@@ -61,7 +59,7 @@ public class Perfil extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Perfil.this, Perfil.class);
+                Intent intent = new Intent(Inicio.this, Perfil.class);
                 startActivity(intent);
                 finish();
             }
@@ -71,7 +69,7 @@ public class Perfil extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Perfil.this, Menu.class);
+                Intent intent = new Intent(Inicio.this, Menu.class);
                 startActivity(intent);
                 finish();
             }
@@ -81,33 +79,32 @@ public class Perfil extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                DBHelper dataBase = new DBHelper(Perfil.this, "DBUsuarios",null,1);
+                DBHelper dataBase = new DBHelper(Inicio.this, "DBUsuarios",null,1);
                 SQLiteDatabase dbwrite = dataBase.getWritableDatabase();
                 dbwrite.delete("Usuario", "codigo=1", null);
                 dbwrite.close();
-                Intent intent = new Intent(Perfil.this, Login.class);
+                Intent intent = new Intent(Inicio.this, Login.class);
                 startActivity(intent);
                 finish();
             }
         });
         // Hashmap para el ListView
-        List = new ArrayList<HashMap<String, String>>();
 
         // Cargar los productos en el Background Thread
-        new LoadInfo().execute();
-        IMC = (TextView) findViewById(R.id.textIMC);
-        pesoI = (TextView) findViewById(R.id.textPesoIdeal);
-        TMB = (TextView) findViewById(R.id.textTMB);
-        name = (TextView) findViewById(R.id.hola);
 
-        bMenu = (Button) findViewById(R.id.editar);
-        bMenu.setOnClickListener(new OnClickListener() {
+        tdia = (TextView) findViewById(R.id.dia);
+        pesoM = (TextView) findViewById(R.id.peso);
+        tsug = (TextView) findViewById(R.id.sugeridas);
+        tmensaje = (TextView) findViewById(R.id.mensaje);
+        pesoM.setVisibility(View.INVISIBLE);
+        tmensaje.setVisibility(View.INVISIBLE);
+        bfindia = (Button) findViewById(R.id.findia);
+        bfindia.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Perfil.this, Editar.class);
-                startActivity(intent);
-                finish();
+
+                new LoadInfo().execute();
             }
         });
 
@@ -123,7 +120,7 @@ public class Perfil extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Perfil.this);
+            pDialog = new ProgressDialog(Inicio.this);
             pDialog.setMessage("Calculando. Por favor espere...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
@@ -136,7 +133,7 @@ public class Perfil extends AppCompatActivity {
         protected String doInBackground(String... args) {
             // Building Parameters
             List params = new ArrayList();
-            DBHelper dataBase = new DBHelper(Perfil.this, "DBUsuarios",null,1);
+            DBHelper dataBase = new DBHelper(Inicio.this, "DBUsuarios",null,1);
             SQLiteDatabase dbread = dataBase.getReadableDatabase();
             if(dbread != null) {
 
@@ -146,7 +143,6 @@ public class Perfil extends AppCompatActivity {
                 {
                     Log.d("Enperfil", c.getString(0));
                     String b=c.getString(0);
-                    Log.d("estoesb",b);
                     params.add(new BasicNameValuePair("id", b));
 
                     dbread.close();
@@ -158,14 +154,12 @@ public class Perfil extends AppCompatActivity {
             JSONObject json = jParser.makeHttpRequest(url, "POST", params);
 
             // Check your log cat for JSON reponse
-            Log.d("Perfil: ", json.toString());
+            Log.d("Inicio: ", json.toString());
 
             try{
                 success = json.getInt(TAG_SUCCESS);
-                I = json.getString(TAG_IMC);
-                P = json.getString(TAG_PesoI);
-                T = json.getString(TAG_TMB);
-                N = json.getString(TAG_NOMBRE);
+                P = json.getString(TAG_PesoM);
+
 
             }catch (JSONException e){
                 e.printStackTrace();
@@ -184,15 +178,12 @@ public class Perfil extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 public void run() {
 
-                    String textIMC = IMC.getText().toString();
-                    String textpesoI = pesoI.getText().toString();
-                    String textTMB = TMB.getText().toString();
-                    String textHola = name.getText().toString();
-
-                    name.setText(String.format("%s%s", textHola, N));
-                    IMC.setText(String.format("%s%s",textIMC, I));
-                    TMB.setText(String.format("%s%s",textTMB, T));
-                    pesoI.setText(String.format("%s%s",textpesoI, P));
+                    String textIMC = tdia.getText().toString();
+                    String textpesoI = pesoM.getText().toString();
+                    String textTMB = tsug.getText().toString();
+                    String textHola = tmensaje.getText().toString();
+                    pesoM.setVisibility(View.VISIBLE);
+                    pesoM.setText(String.format("%s%s", textpesoI, P));
 
                 }
             });
