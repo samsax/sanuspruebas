@@ -9,27 +9,28 @@
     </include>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Calorias del dia: \n"
         android:id="@+id/dia"
-        android:textColor="@color/black"
         android:textSize="30sp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Calorias sugeridas: \n"
         android:id="@+id/sugeridas"
-        android:textColor="@color/black"
         android:textSize="30sp" />
 
   <TextView
-        android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Mensaje"
         android:id="@+id/mensaje"
-        android:textColor="@color/black"
+
         android:textSize="30sp" />
 
     <Button
