@@ -61,7 +61,7 @@ public class Register extends Activity implements OnClickListener{
         gen = (Spinner)findViewById(R.id.genero);
         mRegister = (Button)findViewById(R.id.register);
         mRegister.setOnClickListener(this);
-
+        fecha.updateDate(1993,02,19);
     }
 
     @Override

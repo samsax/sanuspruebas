@@ -252,7 +252,7 @@ public class Editar extends AppCompatActivity implements OnClickListener {
                     gen.setSelection(Integer.parseInt(generoN));
                     nejer.setSelection(Integer.parseInt(ejecicioN));
                     String fechas[] = fechaNacimiento.split("-");
-                    fecha.updateDate(Integer.parseInt(fechas[0]), Integer.parseInt(fechas[1]), Integer.parseInt(fechas[2]));
+                    fecha.updateDate(Integer.parseInt(fechas[0]), Integer.parseInt(fechas[1])-1, Integer.parseInt(fechas[2]));
 
                 }
 
