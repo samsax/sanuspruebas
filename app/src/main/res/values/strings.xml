@@ -35,6 +35,7 @@
     <string name="Menu">Menu</string>
     <string name="cantidad">Cantidad en gramos</string>
     <string name="editar">Editar</string>
+    <string name="ingresar">Ingresar</string>
 
 
 </resources>

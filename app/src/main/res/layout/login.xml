@@ -15,7 +15,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/login"
         android:layout_marginBottom="25dp"
-        android:text="Register" />
+        android:text="@string/Registrar" />
 
     <Button
         style="@style/button_text"
@@ -26,7 +26,7 @@
         android:layout_above="@+id/register"
         android:layout_alignLeft="@+id/password"
         android:layout_alignRight="@+id/password"
-        android:text="Login" />
+        android:text="@string/ingresar" />
 
     <EditText
         style="@style/EditTextStyle"
