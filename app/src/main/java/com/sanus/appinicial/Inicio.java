@@ -113,7 +113,11 @@ public class Inicio extends AppCompatActivity {
 
     }//fin onCreate
 
-
+    public void onBackPressed() {
+        super.onBackPressed();
+        setResult(RESULT_OK);
+        finish();
+    }
 
     class LoadInfo extends AsyncTask<String, String, String> {
 
@@ -189,7 +193,7 @@ public class Inicio extends AppCompatActivity {
                     {
                         bfindia.setVisibility(View.INVISIBLE);
                         tmensaje.setVisibility(View.VISIBLE);
-                        tmensaje.setText("Tu peso en un mes será:"+P);
+                        tmensaje.setText("Su peso aproximado será:"+P);
                     }
                     else {
                         bfindia.setVisibility(View.INVISIBLE);

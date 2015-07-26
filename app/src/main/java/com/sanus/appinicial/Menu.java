@@ -97,6 +97,12 @@ public class Menu extends AppCompatActivity implements OnClickListener {
 
 
     }
+    public void onBackPressed() {
+        super.onBackPressed();
+        setResult(RESULT_OK);
+        finish();
+    }
+
 
     @Override
     public void onClick(View v) {
