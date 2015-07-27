@@ -76,6 +76,16 @@ public class Perfil extends AppCompatActivity {
                 finish();
             }
         });
+        Button bAyu= (Button) findViewById(R.id.ayuda);
+        bAyu.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Perfil.this, Ayuda.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         Button bLogout= (Button) findViewById(R.id.logout);
         bLogout.setOnClickListener(new OnClickListener() {
 

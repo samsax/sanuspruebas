@@ -250,7 +250,7 @@ public class Inicio extends AppCompatActivity {
                 cal = json.getString(TAG_CAL);
 
             }catch (JSONException e){
-                e.printStackTrace();
+                Log.d("Inicio: ", "Error en red");
             }
 
             return null;

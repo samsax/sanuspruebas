@@ -25,6 +25,7 @@
         <activity android:name=".VerReceta"></activity>
         <activity android:name=".Editar"></activity>
         <activity android:name=".Inicio"></activity>
+        <activity android:name=".Ayuda"></activity>
     </application>
 
 </manifest>

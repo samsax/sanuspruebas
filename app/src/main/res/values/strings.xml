@@ -11,7 +11,7 @@
     <string name="Peso">Peso (Kilogramos)</string>
     <string name="Nacimiento">Fecha de nacimiento</string>
     <string name="suIMC">Su IMC es: </string>
-    <string name="indicadoresIMC"><![CDATA[Indice de Masa Corporal(IMC):\n Bajo peso (IMC <18,5) \n Rango normal (IMC = 18,5-24,99)\n Sobrepeso (IMC = 25-29,99)\n Obesidad (IMC ≥30) \n Su IMC es: ]]></string>
+    <string name="indicadoresIMC"><![CDATA[Indice de Masa Corporal(IMC):\n Bajo peso (IMC <18,5) \n Rango normal (IMC = 18,5-24,99)\n Sobrepeso (IMC = 25-29,99)\n Obesidad (IMC ≥30) ]]></string>
     <string name="pesoIdeal">Su peso ideal es: </string>
     <string name="suTMB">La cantidad de calorias que deberias consumir diario son: </string>
     <string-array name="cantidad">
@@ -36,6 +36,6 @@
     <string name="cantidad">Cantidad en gramos</string>
     <string name="editar">Editar</string>
     <string name="ingresar">Ingresar</string>
-
+    <string name="Ayuda">Ayuda</string>
 
 </resources>
