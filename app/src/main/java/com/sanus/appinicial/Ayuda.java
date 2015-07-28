@@ -91,11 +91,17 @@ public class Ayuda extends AppCompatActivity {
             }
         });
 
+
         IMC = (TextView) findViewById(R.id.textIMC);
         pesoI = (TextView) findViewById(R.id.textPesoIdeal);
         TMB = (TextView) findViewById(R.id.textTMB);
 
     }//fin onCreate
+    public void onBackPressed() {
+        Intent intent = new Intent(Ayuda.this, Perfil.class);
+        startActivity(intent);
+        finish();
+    }
 }
 
 

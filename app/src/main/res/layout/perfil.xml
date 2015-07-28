@@ -17,18 +17,6 @@
             >
         </include>
 
-            <Button
-                android:id="@+id/ayuda"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/material_deep_teal_500"
-                android:drawableTop="@mipmap/ic_ayuda"
-                android:text="@string/Ayuda"
-                android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@+id/perfilt"
-                android:layout_toStartOf="@+id/perfilt"
-                android:layout_gravity="right" />
-
             <TextView
             android:id="@+id/hola"
             style="@style/Message"
@@ -52,6 +40,18 @@
             android:layout_height="wrap_content"
             android:text="@string/suIMC"
             android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/ayuda"
+                android:layout_width="41dp"
+                android:layout_height="44dp"
+                android:background="@color/material_deep_teal_500"
+                android:drawableTop="@mipmap/ic_ayuda"
+                android:text="@string/Ayuda"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/perfilt"
+                android:layout_toStartOf="@+id/perfilt"
+                android:layout_gravity="right" />
 
             <Space
                 android:layout_width="match_parent"
